@@ -1,0 +1,151 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+nav ul a,
+nav .brand-logo {
+  color: white;
+}
+
+p {
+  line-height: 2rem;
+}
+
+.button-collapse {
+  color: white;
+}
+
+.parallax-container {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: black;
+}
+  .parallax-container .section {
+    width: 100%;
+  }
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+  .middle-nav{
+    display: block;
+  }
+}
+
+@media only screen and (min-width : 600px) {
+  .middle-nav{
+    display: block;
+  }
+  .button-collapse{
+    display:none;
+  }
+  #nav-middle{
+    display:none;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+  .middle-nav{
+    display: none;
+  }
+  .button-collapse{
+    display:block;
+  }
+}
+
+@media only screen and (min-width : 993px) {
+  .mobile-nav {
+    display : block;
+    margin:top:80px;
+    color:white;
+  }
+  .logo-media {
+    display : none;
+  }
+  .middle-nav {
+    display: none;
+  }
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}
+
+.margin-auto{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.center-nav{
+  margin: 0 auto;
+  width: 600px;
+}
+
+/*
+* Inside container
+*/
+h4{
+	font-size: 25px;
+}
+.header-color-black {
+  border: 1px solid black;
+  box-sizing: content-box;
+  position: relative;
+  min-height: 10px;
+  height: 46px;
+  padding: 0px 5px 0;
+  color: #fff;
+}
+.h4-div{
+  margin-left: 5px;
+  margin-top: 0px;
+  background-color: black;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  position: absolute;
+}
+.header-color-black+.widget-body {
+  border-color: black;
+  margin-top: -10px;
+  padding: 20px 10px;
+}
+.widget-body {
+  border: 1px solid #CCC;
+  border-top: 0;
+  background-color: #fff;
+}
+.nav-button-margin{
+	margin: 10px 20px 0 0;
+}
+.navbar{
+border-radius: 0;
+background: #438EB9;
+color: #fff;
+}
+.navbar .navbar-brand {
+color: #FFF;
+font-size: 24px;
+text-shadow: none;
+}

@@ -1,0 +1,9 @@
+.header-color-blue {
+    background: #307ECC;
+    border: 1px solid #307ECC;
+    box-sizing: content-box;
+    position: relative;
+    min-height: 38px;
+    padding: 0 12px 0;
+    color: #fff;
+}
