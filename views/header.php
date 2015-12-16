@@ -3,6 +3,7 @@
 <head>
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
    <title><?= $data['title'] . ' - ' . SITETITLE ?></title>
+   <link rel="shortcut icon" href="http://www.astrid-garth.de//bilder/favicon.ico"/>
    <!-- Compiled and minified CSS -->
    <link rel="stylesheet" href="<?= URL::MATERIALIZE('materialize','css') ?>" media="screen,projection"/>
    <!-- Let browser know website is optimized for mobile -->

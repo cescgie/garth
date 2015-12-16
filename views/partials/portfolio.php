@@ -15,13 +15,9 @@
           </div>
           <div class="widget-body">
             <p>
-              Synergistically procrastinate one-to-one results for accurate platforms. Assertively whiteboard corporate users whereas dynamic initiatives.
+              To make images resize responsively to page width, you can add the class responsive-img to your image tag. It will now have a max-width: 100% and height:auto.
             </p>
-            <p>
-              Energistically architect leading-edge users and inexpensive internal or "organic" sources. Distinctively evolve e-business resources after progressive intellectual capital. Objectively architect maintainable technologies via strategic convergence. Continually optimize stand-alone expertise with e-business e-services. Continually conceptualize client-centered opportunities and.
-            </p>
-            <img class="materialboxed" data-caption="A picture of some deer and tons of trees" width="250" src="http://th01.deviantart.net/fs70/PRE/i/2013/126/1/e/nature_portrait_by_pw_fotografie-d63tx0n.jpg">
-
+            <img class="materialboxed responsive-img" data-caption="A picture of some deer and tons of trees" width="250" src="http://th01.deviantart.net/fs70/PRE/i/2013/126/1/e/nature_portrait_by_pw_fotografie-d63tx0n.jpg">
           </div>
         </div>
       </div>

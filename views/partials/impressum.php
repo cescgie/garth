@@ -14,12 +14,10 @@
             </div>
           </div>
           <div class="widget-body">
-            <p>
-              Synergistically procrastinate one-to-one results for accurate platforms. Assertively whiteboard corporate users whereas dynamic initiatives.
-            </p>
-            <p>
-              Energistically architect leading-edge users and inexpensive internal or "organic" sources. Distinctively evolve e-business resources after progressive intellectual capital. Objectively architect maintainable technologies via strategic convergence. Continually optimize stand-alone expertise with e-business e-services. Continually conceptualize client-centered opportunities and.
-            </p>
+           <p>Astrid Garth</p>
+           <p>Pfarrstrasse 8</p>
+           <p>55262 Heidesheim</p>
+           <p>Telefon: 06132 - 56 322</p>
           </div>
         </div>
       </div>
