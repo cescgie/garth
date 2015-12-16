@@ -24,14 +24,16 @@
          <img style="width:300px;height:70px;" class="logo-media-grey hide-on-med-and-down" src="<?= URL::ASSETS('grey-logo.png','logo') ?>">
        </a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <!-- menu for above 992px -->
       <ul class="right hide-on-med-and-down">
-        <li><a href="#portfolio">PORTFOLIO</a></li>
+        <li><a class="active" href="#portfolio">PORTFOLIO</a></li>
         <li><a href="#vita">VITA</a></li>
         <li><a href="#referenzen">REFERENZEN</a></li>
         <li><a href="#links">LINKS</a></li>
         <li><a href="#kontakt">KONTAKT</a></li>
         <li><a href="#impressum">IMPRESSUM</a></li>
       </ul>
+      <!-- menu for max 992px -->
       <div class="middle-nav" align="center">
         <div class="row">
           <div class="col s12">
@@ -46,8 +48,9 @@
           </div>
         </div>
       </div>
+      <!-- menu for max 600px -->
       <ul class="side-nav" id="mobile-demo">
-        <li><a href="#portfolio">PORTFOLIO</a></li>
+        <li><a class="active" href="#portfolio">PORTFOLIO</a></li>
         <li><a href="#vita">VITA</a></li>
         <li><a href="#referenzen">REFERENZEN</a></li>
         <li><a href="#links">LINKS</a></li>

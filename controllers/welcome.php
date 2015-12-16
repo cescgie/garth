@@ -10,7 +10,7 @@ class Welcome extends Controller {
       $data['title'] = 'Home';
 
       $this->_view->render('header', $data);
-      $this->_view->render('home/paralax', $data);
+      $this->_view->render('paralax', $data);
       $this->_view->render('footer');
    }
 

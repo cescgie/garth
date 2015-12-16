@@ -1,6 +1,4 @@
-<?php include_once('partials/vita.php') ?>
 <div id="portfolio" class="col s12">
-  PORTFOLIO
   <!-- Menu -->
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
@@ -30,7 +28,3 @@
     </div>
   </div> <!-- / .container -->
 </div> <!-- Portfolio -->
-  <div id="referenzen" class="col s12">REFERENZEN</div>
-  <div id="links" class="col s12">LINKS</div>
-  <div id="kontakt" class="col s12">KONTAKT</div>
-  <div id="impressum" class="col s12">IMPRESSUM</div>
