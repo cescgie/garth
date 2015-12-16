@@ -6,6 +6,17 @@
  * Made By MaterializeCSS.com
  */
 
+body {
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+}
+
+main {
+ flex: 1 0 auto;
+}
+
+
 nav ul a,
 nav .brand-logo {
   color: white;
@@ -170,4 +181,10 @@ text-shadow: none;
 
 .tabs .tab a:hover{
   color : #f9c9cb !important;
+}
+footer.page-footer {
+  background-color: rgba(1, 1, 1, 0.74);
+}
+footer.page-footer .footer-copyright{
+  background-color: rgba(13, 12, 13, 0.77);
 }
