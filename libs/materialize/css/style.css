@@ -51,6 +51,9 @@ p {
   .middle-nav{
     display: block;
   }
+  nav ul a{
+    font-size: 1em !important;
+  }
 }
 
 @media only screen and (min-width : 600px) {
@@ -100,9 +103,14 @@ p {
     width:100%;
   }
 }
-@media only screen and (min-width : 1117px) {
-  .deskt{
-    width: 130px !important;
+@media only screen and (min-width : 993px) and (max-width : 1057px){
+  .shown{
+    width:100%;
+    max-width: 400px;
+  }
+  .tabs .tab{
+    width: 100%;
+    min-width: 50px;
   }
 }
 
@@ -131,7 +139,7 @@ footer.page-footer {
 * Inside container
 */
 h4{
-	font-size: 25px;
+	font-size: 20px;
 }
 .header-color-black {
   border: 1px solid black;
@@ -147,7 +155,7 @@ h4{
   margin-top: 0px;
   background-color: black;
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
   padding-right: 10px;
   padding-left: 10px;
   position: absolute;
@@ -166,14 +174,14 @@ h4{
 	margin: 10px 20px 0 0;
 }
 .navbar{
-border-radius: 0;
-background: #438EB9;
-color: #fff;
+  border-radius: 0;
+  background: #438EB9;
+  color: #fff;
 }
 .navbar .navbar-brand {
-color: #FFF;
-font-size: 24px;
-text-shadow: none;
+  color: #FFF;
+  font-size: 24px;
+  text-shadow: none;
 }
 .tabs .tab a{
   color : #eee !important;
@@ -187,4 +195,8 @@ footer.page-footer {
 }
 footer.page-footer .footer-copyright{
   background-color: rgba(13, 12, 13, 0.77);
+}
+nav ul a{
+  font-size: 0.7em;
+  padding: 0 0px;
 }
