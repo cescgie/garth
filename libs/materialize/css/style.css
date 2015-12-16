@@ -20,7 +20,7 @@ p {
 }
 
 .parallax-container {
-  min-height: 380px;
+  min-height: 1000px;
   line-height: 0;
   height: auto;
   color: black;
@@ -64,6 +64,10 @@ p {
   .button-collapse{
     display:block;
   }
+  .parallax-container{
+    margin-top:50px;
+  }
+
 }
 
 @media only screen and (min-width : 993px) {
@@ -77,6 +81,9 @@ p {
   }
   .middle-nav {
     display: none;
+  }
+  .parallax-container{
+    margin-top:50px;
   }
 }
 

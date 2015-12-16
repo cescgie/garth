@@ -7,7 +7,7 @@
 <div id="impressum" class="col s12">IMPRESSUM</div>
 
   <!-- Menu -->
-  <div id="index-banner" style="margin-top:50px;" class="parallax-container">
+  <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
       <div class="container">
         <div id="seite1">
