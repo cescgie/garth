@@ -29,12 +29,12 @@
         <div class="row">
           <div class="col s12">
             <ul class="tabs black">
-              <li class="tab col s3"><a class="active" href="#portfolio">PORTFOLIO</a></li>
-              <li class="tab col s3"><a href="#vita">VITA</a></li>
-              <li class="tab col s3"><a href="#referenzen">REFERENZEN</a></li>
-              <li class="tab col s3"><a href="#links">LINKS</a></li>
-              <li class="tab col s3"><a href="#kontakt">KONTAKT</a></li>
-              <li class="tab col s3"><a href="#impressum">IMPRESSUM</a></li>
+              <li class="tab col s3 deskt"><a class="active" href="#portfolio">PORTFOLIO</a></li>
+              <li class="tab col s3 deskt"><a href="#vita">VITA</a></li>
+              <li class="tab col s3 deskt"><a href="#referenzen">REFERENZEN</a></li>
+              <li class="tab col s3 deskt"><a href="#links">LINKS</a></li>
+              <li class="tab col s3 deskt"><a href="#kontakt">KONTAKT</a></li>
+              <li class="tab col s3 deskt"><a href="#impressum">IMPRESSUM</a></li>
             </ul>
           </div>
         </div>
