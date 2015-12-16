@@ -24,17 +24,8 @@
          <img style="width:300px;height:70px;" class="logo-media-grey hide-on-med-and-down" src="<?= URL::ASSETS('grey-logo.png','logo') ?>">
        </a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <!-- menu for above 992px -->
-      <ul class="right hide-on-med-and-down">
-        <li><a class="active" href="#portfolio">PORTFOLIO</a></li>
-        <li><a href="#vita">VITA</a></li>
-        <li><a href="#referenzen">REFERENZEN</a></li>
-        <li><a href="#links">LINKS</a></li>
-        <li><a href="#kontakt">KONTAKT</a></li>
-        <li><a href="#impressum">IMPRESSUM</a></li>
-      </ul>
-      <!-- menu for max 992px -->
-      <div class="middle-nav" align="center">
+      <!-- menu for screen with width above 992px -->
+      <div class="right hide-on-med-and-down">
         <div class="row">
           <div class="col s12">
             <ul class="tabs black">
@@ -48,7 +39,22 @@
           </div>
         </div>
       </div>
-      <!-- menu for max 600px -->
+      <!-- menu for screen max-width 992px -->
+      <div class="middle-nav">
+        <div class="row">
+          <div class="col s12">
+            <ul class="tabs black">
+              <li class="tab col s3"><a class="active" href="#portfolio">PORTFOLIO</a></li>
+              <li class="tab col s3"><a href="#vita">VITA</a></li>
+              <li class="tab col s3"><a href="#referenzen">REFERENZEN</a></li>
+              <li class="tab col s3"><a href="#links">LINKS</a></li>
+              <li class="tab col s3"><a href="#kontakt">KONTAKT</a></li>
+              <li class="tab col s3"><a href="#impressum">IMPRESSUM</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- menu for screen max-width 600px -->
       <ul class="side-nav" id="mobile-demo">
         <li><a class="active" href="#portfolio">PORTFOLIO</a></li>
         <li><a href="#vita">VITA</a></li>
