@@ -1,4 +1,4 @@
-<div id="impressum" class="col s12">
+<div id="" class="col s12">
   <!-- Menu -->
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">

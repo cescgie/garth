@@ -107,6 +107,8 @@ p {
   .shown{
     width:100%;
     max-width: 400px;
+    font-size: 0.8em;
+    float:right;
   }
   .tabs .tab{
     width: 100%;
@@ -197,6 +199,20 @@ footer.page-footer .footer-copyright{
   background-color: rgba(13, 12, 13, 0.77);
 }
 nav ul a{
-  font-size: 0.7em;
-  padding: 0 0px;
+  font-size: 0.8em;
+  padding: 0 5px;
+}
+.row .col.s2{
+  width:16%;
+  text-align: center;
+}
+.row .col{
+  padding: 0 0.8rem;
+}
+.ul_menu a:active{
+        color:#2bbbad;
+        -webkit-transition: 0.2s 0.2s;
+      }
+.ul_menu a:hover{
+      color:#2bbbad;
 }
