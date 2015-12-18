@@ -114,6 +114,10 @@ p {
     width: 100%;
     min-width: 50px;
   }
+  .row .col.s2.deskt{
+    width: 16% !important;
+    text-align: center;
+  }
 }
 
 .icon-block {
@@ -202,17 +206,17 @@ nav ul a{
   font-size: 0.8em;
   padding: 0 5px;
 }
-.row .col.s2{
-  width:16%;
+.row .col.s2.deskt{
+  width: auto;
   text-align: center;
 }
 .row .col{
-  padding: 0 0.8rem;
+  padding: 0 -1rem !important;
 }
 .ul_menu a:active{
-        color:#2bbbad;
-        -webkit-transition: 0.2s 0.2s;
-      }
+  color:#2bbbad;
+  -webkit-transition: 0.2s 0.2s;
+}
 .ul_menu a:hover{
-      color:#2bbbad;
+  color:#2bbbad;
 }

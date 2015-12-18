@@ -31,16 +31,14 @@
          <!-- menu for screen with width above 992px -->
          <div class="right hide-on-med-and-down shown">
            <div class="row">
-             <div class="col s12">
                <ul class="ul_menu">
-                 <li class="col s2"><a class="active" href="<?= DIR ?>select/partials/portfolio">PORTFOLIO</a></li>
-                 <li class="col s2"><a href="<?= DIR ?>select/partials/vita">VITA</a></li>
-                 <li class="col s2"><a href="<?= DIR ?>select/partials/referenzen">REFERENZEN</a></li>
-                 <li class="col s2"><a href="<?= DIR ?>select/partials/links">LINKS</a></li>
-                 <li class="col s2"><a href="<?= DIR ?>select/partials/kontakt">KONTAKT</a></li>
-                 <li class="col s2"><a href="<?= DIR ?>select/partials/impressum">IMPRESSUM</a></li>
+                 <li class="col s2 deskt"><a class="active" href="<?= DIR ?>portfolio">PORTFOLIO</a></li>
+                 <li class="col s2 deskt"><a href="<?= DIR ?>vita">VITA</a></li>
+                 <li class="col s2 deskt"><a href="<?= DIR ?>referenzen">REFERENZEN</a></li>
+                 <li class="col s2 deskt"><a href="<?= DIR ?>links">LINKS</a></li>
+                 <li class="col s2 deskt"><a href="<?= DIR ?>kontakt">KONTAKT</a></li>
+                 <li class="col s2 deskt"><a href="<?= DIR ?>impressum">IMPRESSUM</a></li>
                </ul>
-             </div>
            </div>
          </div>
          <!-- menu for screen max-width 992px -->
@@ -48,12 +46,12 @@
            <div class="row">
              <div class="col s12">
                <ul class="ul_menu">
-                 <li class="col s2"><a class="active" href="<?= DIR ?>select/partials/portfolio">PORTFOLIO</a></li>
-                 <li class="col s2"><a href="<?= DIR ?>select/partials/vita">VITA</a></li>
-                 <li class="col s2"><a href="<?= DIR ?>select/partials/referenzen">REFERENZEN</a></li>
-                 <li class="col s2"><a href="<?= DIR ?>select/partials/links">LINKS</a></li>
-                 <li class="col s2"><a href="<?= DIR ?>select/partials/kontakt">KONTAKT</a></li>
-                 <li class="col s2"><a href="<?= DIR ?>select/partials/impressum">IMPRESSUM</a></li>
+                 <li class="col s2"><a class="active" href="<?= DIR ?>portfolio">PORTFOLIO</a></li>
+                 <li class="col s2"><a href="<?= DIR ?>vita">VITA</a></li>
+                 <li class="col s2"><a href="<?= DIR ?>referenzen">REFERENZEN</a></li>
+                 <li class="col s2"><a href="<?= DIR ?>links">LINKS</a></li>
+                 <li class="col s2"><a href="<?= DIR ?>kontakt">KONTAKT</a></li>
+                 <li class="col s2"><a href="<?= DIR ?>impressum">IMPRESSUM</a></li>
                </ul>
              </div>
            </div>
@@ -64,12 +62,12 @@
      <div class="nav-wrapper">
       <!-- menu for screen max-width 600px -->
       <ul class="side-nav" id="mobile-demo">
-        <li><a class="active" href="<?= DIR ?>select/partials/portfolio">PORTFOLIO</a></li>
-        <li><a href="<?= DIR ?>select/partials/vita">VITA</a></li>
-        <li><a href="<?= DIR ?>select/partials/referenzen">REFERENZEN</a></li>
-        <li><a href="<?= DIR ?>select/partials/links">LINKS</a></li>
-        <li><a href="<?= DIR ?>select/partials/kontakt">KONTAKT</a></li>
-        <li><a href="<?= DIR ?>select/partials/impressum">IMPRESSUM</a></li>
+        <li><a class="active" href="<?= DIR ?>portfolio">PORTFOLIO</a></li>
+        <li><a href="<?= DIR ?>vita">VITA</a></li>
+        <li><a href="<?= DIR ?>referenzen">REFERENZEN</a></li>
+        <li><a href="<?= DIR ?>links">LINKS</a></li>
+        <li><a href="<?= DIR ?>kontakt">KONTAKT</a></li>
+        <li><a href="<?= DIR ?>impressum">IMPRESSUM</a></li>
       </ul>
     </div>
  </nav>
