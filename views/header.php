@@ -19,6 +19,8 @@
    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
    <!--  Android 5 Chrome Color-->
    <meta name="theme-color" content="#EE6E73">
+   <!-- Own style -->
+   <link type="text/css" href="<?= URL::EXTRAS('style','css')?>" media="screen">
 </head>
 <body>
     <div align="center" class="margin-auto">
