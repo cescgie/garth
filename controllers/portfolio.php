@@ -9,6 +9,7 @@ class Portfolio extends Controller {
    public function index() {
       $data['title'] = 'PORTFOLIO';
       $data['subtitle'] = 'PORTFOLIO';
+      $data['menu_active'] = 'portfolio';
 
       $this->_view->render('header', $data);
       $this->_view->render('partials/partials_header', $data);
@@ -17,9 +18,11 @@ class Portfolio extends Controller {
       $this->_view->render('partials/partials_footer', $data);
       $this->_view->render('footer');
    }
-   public function oberkategorie($name){
+   public function kategorie($name){
       $data['title'] = strtoupper($name).' | PORTFOLIO';
       $data['subtitle'] = strtoupper($name);
+      $data['menu_active'] = 'portfolio';
+      $data['sub_menu_active'] = $name;
       //get kategorie id
       $data['kategorie_id'] = $this->_model->selectOne("kategorie","name",$name);
       $kategorie_id = $data['kategorie_id'][0]['id'];
@@ -40,4 +43,5 @@ class Portfolio extends Controller {
       $data['album_id'] = $this->_model->selectOne("albums","name",$name);
       $album_id = $data['album_id'][0]['id'];
       print_r($album_id);
+  }
 }

@@ -9,6 +9,7 @@ class Vita extends Controller {
    public function index() {
       $data['title'] = 'VITA';
       $data['subtitle'] = 'VITA';
+      $data['menu_active'] = 'vita';
 
       $this->_view->render('header', $data);
       $this->_view->render('partials/partials_header', $data);

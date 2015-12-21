@@ -237,6 +237,12 @@ nav ul a{
 .ul_menu a:hover{
   color:#2bbbad;
 }
+.ul_menu a.active{
+  color:#2bbbad;
+}
+.sub_ul_menu a.active{
+  color:#2bbbad;
+}
 .sub_ul_menu a:active{
   color:#2bbbad;
   -webkit-transition: 0.2s 0.2s;

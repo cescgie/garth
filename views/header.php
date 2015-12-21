@@ -39,12 +39,12 @@
          <div class="right hide-on-med-and-down shown">
            <div class="row">
                <ul class="ul_menu">
-                 <li class="col s2 deskt"><a class="active" href="<?= DIR ?>portfolio">PORTFOLIO</a></li>
-                 <li class="col s2 deskt"><a href="<?= DIR ?>vita">VITA</a></li>
-                 <li class="col s2 deskt"><a href="<?= DIR ?>referenzen">REFERENZEN</a></li>
-                 <li class="col s2 deskt"><a href="<?= DIR ?>links">LINKS</a></li>
-                 <li class="col s2 deskt"><a href="<?= DIR ?>kontakt">KONTAKT</a></li>
-                 <li class="col s2 deskt"><a href="<?= DIR ?>impressum">IMPRESSUM</a></li>
+                 <li class="col s2 deskt"><a <?php if($data['menu_active'] === 'portfolio'):?>class="active"<?php endif;?> href="<?= DIR ?>portfolio">PORTFOLIO</a></li>
+                 <li class="col s2 deskt"><a <?php if($data['menu_active'] === 'vita'):?>class="active"<?php endif;?> href="<?= DIR ?>vita">VITA</a></li>
+                 <li class="col s2 deskt"><a <?php if($data['menu_active'] === 'referenzen'):?>class="active"<?php endif;?> href="<?= DIR ?>referenzen">REFERENZEN</a></li>
+                 <li class="col s2 deskt"><a <?php if($data['menu_active'] === 'links'):?>class="active"<?php endif;?> href="<?= DIR ?>links">LINKS</a></li>
+                 <li class="col s2 deskt"><a <?php if($data['menu_active'] === 'kontakt'):?>class="active"<?php endif;?> href="<?= DIR ?>kontakt">KONTAKT</a></li>
+                 <li class="col s2 deskt"><a <?php if($data['menu_active'] === 'impressum'):?>class="active"<?php endif;?> href="<?= DIR ?>impressum">IMPRESSUM</a></li>
                </ul>
            </div>
          </div>
@@ -53,12 +53,12 @@
            <div class="row">
              <div class="col s12">
                <ul class="ul_menu">
-                 <li class="col s2"><a class="active" href="<?= DIR ?>portfolio">PORTFOLIO</a></li>
-                 <li class="col s2"><a href="<?= DIR ?>vita">VITA</a></li>
-                 <li class="col s2"><a href="<?= DIR ?>referenzen">REFERENZEN</a></li>
-                 <li class="col s2"><a href="<?= DIR ?>links">LINKS</a></li>
-                 <li class="col s2"><a href="<?= DIR ?>kontakt">KONTAKT</a></li>
-                 <li class="col s2"><a href="<?= DIR ?>impressum">IMPRESSUM</a></li>
+                 <li class="col s2"><a <?php if($data['menu_active'] === 'portfolio'):?>class="active"<?php endif;?> href="<?= DIR ?>portfolio">PORTFOLIO</a></li>
+                 <li class="col s2"><a <?php if($data['menu_active'] === 'vita'):?>class="active"<?php endif;?> href="<?= DIR ?>vita">VITA</a></li>
+                 <li class="col s2"><a <?php if($data['menu_active'] === 'referenzen'):?>class="active"<?php endif;?> href="<?= DIR ?>referenzen">REFERENZEN</a></li>
+                 <li class="col s2"><a <?php if($data['menu_active'] === 'links'):?>class="active"<?php endif;?> href="<?= DIR ?>links">LINKS</a></li>
+                 <li class="col s2"><a <?php if($data['menu_active'] === 'kontakt'):?>class="active"<?php endif;?> href="<?= DIR ?>kontakt">KONTAKT</a></li>
+                 <li class="col s2"><a <?php if($data['menu_active'] === 'impressum'):?>class="active"<?php endif;?> href="<?= DIR ?>impressum">IMPRESSUM</a></li>
                </ul>
              </div>
            </div>
@@ -68,13 +68,13 @@
 
      <div class="nav-wrapper">
       <!-- menu for screen max-width 600px -->
-      <ul class="side-nav" id="mobile-demo">
-        <li><a class="active" href="<?= DIR ?>portfolio">PORTFOLIO</a></li>
-        <li><a href="<?= DIR ?>vita">VITA</a></li>
-        <li><a href="<?= DIR ?>referenzen">REFERENZEN</a></li>
-        <li><a href="<?= DIR ?>links">LINKS</a></li>
-        <li><a href="<?= DIR ?>kontakt">KONTAKT</a></li>
-        <li><a href="<?= DIR ?>impressum">IMPRESSUM</a></li>
+      <ul class="side-nav ul_menu" id="mobile-demo">
+        <li class="col s2"><a <?php if($data['menu_active'] === 'portfolio'):?>class="active"<?php endif;?> href="<?= DIR ?>portfolio">PORTFOLIO</a></li>
+        <li class="col s2"><a <?php if($data['menu_active'] === 'vita'):?>class="active"<?php endif;?> href="<?= DIR ?>vita">VITA</a></li>
+        <li class="col s2"><a <?php if($data['menu_active'] === 'referenzen'):?>class="active"<?php endif;?> href="<?= DIR ?>referenzen">REFERENZEN</a></li>
+        <li class="col s2"><a <?php if($data['menu_active'] === 'links'):?>class="active"<?php endif;?> href="<?= DIR ?>links">LINKS</a></li>
+        <li class="col s2"><a <?php if($data['menu_active'] === 'kontakt'):?>class="active"<?php endif;?> href="<?= DIR ?>kontakt">KONTAKT</a></li>
+        <li class="col s2"><a <?php if($data['menu_active'] === 'impressum'):?>class="active"<?php endif;?> href="<?= DIR ?>impressum">IMPRESSUM</a></li>
       </ul>
     </div>
  </nav>

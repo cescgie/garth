@@ -9,6 +9,7 @@ class Links extends Controller {
    public function index() {
       $data['title'] = 'LINKS';
       $data['subtitle'] = 'LINKS';
+      $data['menu_active'] = 'links';
 
       $this->_view->render('header', $data);
       $this->_view->render('partials/partials_header', $data);

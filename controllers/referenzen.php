@@ -9,6 +9,7 @@ class Referenzen extends Controller {
    public function index() {
       $data['title'] = 'REFERENZEN';
       $data['subtitle'] = 'REFERENZEN';
+      $data['menu_active'] = 'referenzen';
 
       $this->_view->render('header', $data);
       $this->_view->render('partials/partials_header', $data);
