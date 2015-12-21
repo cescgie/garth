@@ -1,4 +1,3 @@
-<div class="widget-body">
   <div class="row">
     <div class="container">
       <form class="col s12">
@@ -29,4 +28,3 @@
       </form>
     </div>
   </div>
-</div>
