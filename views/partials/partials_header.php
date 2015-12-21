@@ -1,5 +1,5 @@
 <!-- Menu -->
-<div id="index-banner" class="parallax-container">
+<div id="index-banner" class="partial">
   <div class="section no-pad-bot">
     <div class="container">
       <div class="widget-header header-color-black">

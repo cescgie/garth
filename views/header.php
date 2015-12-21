@@ -2,6 +2,9 @@
 <html>
 <head>
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="msapplication-tap-highlight" content="no">
+   <meta name="description" content="Astrid Garth">
    <title><?= $data['title'] . ' - ' . SITETITLE ?></title>
    <link rel="shortcut icon" href="http://www.astrid-garth.de//bilder/favicon.ico"/>
    <!-- Compiled and minified CSS -->
@@ -14,6 +17,8 @@
    <link href="<?= URL::MATERIALIZE('style','css') ?>" type="text/css" rel="stylesheet" media="screen,projection"/>
    <!--Import jQuery before materialize.js-->
    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+   <!--  Android 5 Chrome Color-->
+   <meta name="theme-color" content="#EE6E73">
 </head>
 <body>
     <div align="center" class="margin-auto">
@@ -42,7 +47,7 @@
            </div>
          </div>
          <!-- menu for screen max-width 992px -->
-         <div class="middle-nav">
+         <div class="hide-on-large-only hide-on-small-only">
            <div class="row">
              <div class="col s12">
                <ul class="ul_menu">

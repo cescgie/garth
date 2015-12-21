@@ -30,15 +30,24 @@ p {
   color: white;
 }
 
-.parallax-container {
-  min-height: 1000px;
+.partial{
+  min-height: 400px;
   line-height: 1;
   height: auto;
   color: black;
+  margin-bottom: 50px;
 }
-  .parallax-container .section {
+
+.parallax-container{
+  min-height: 400px;
+  line-height: 1;
+  height: auto;
+  color: white;
+}
+
+.parallax-container .section {
     width: 100%;
-  }
+}
 
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
@@ -78,7 +87,7 @@ p {
   .button-collapse{
     display:block;
   }
-  .parallax-container{
+  .partial{
     margin-top:50px;
   }
 
@@ -96,7 +105,7 @@ p {
   .middle-nav {
     display: none;
   }
-  .parallax-container{
+  .partial{
     margin-top:50px;
   }
   .tabs .tab a{
@@ -205,6 +214,7 @@ footer.page-footer .footer-copyright{
 nav ul a{
   font-size: 0.8em;
   padding: 0 5px;
+  text-align: center;
 }
 .row .col.s2.deskt{
   width: auto;
