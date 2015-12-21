@@ -47,7 +47,7 @@
            </div>
          </div>
          <!-- menu for screen max-width 992px -->
-         <div class="hide-on-large-only hide-on-small-only">
+         <div class="hide-on-large-only hide-on-small-only middle">
            <div class="row">
              <div class="col s12">
                <ul class="ul_menu">

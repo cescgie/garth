@@ -60,6 +60,9 @@ p {
   .middle-nav{
     display: block;
   }
+  .partial{
+    margin-top: 50px;
+  }
   nav ul a{
     font-size: 1em !important;
   }
@@ -211,10 +214,14 @@ footer.page-footer {
 footer.page-footer .footer-copyright{
   background-color: rgba(13, 12, 13, 0.77);
 }
+nav div.middle ul{
+  font-size: 1em;
+  padding: 0 5px;
+  text-align: center;
+}
 nav ul a{
   font-size: 0.8em;
   padding: 0 5px;
-  text-align: center;
 }
 .row .col.s2.deskt{
   width: auto;
