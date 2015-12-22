@@ -208,12 +208,23 @@ h4{
 .tabs .tab a:hover{
   color : #f9c9cb !important;
 }
+
 footer.page-footer {
   background-color: rgba(1, 1, 1, 0.74);
 }
 footer.page-footer .footer-copyright{
   background-color: rgba(13, 12, 13, 0.77);
 }
+
+.outside {
+    position:relative;
+}
+footer.inside {
+    position: absolute;
+    bottom: 0;
+    width:100%;
+}
+
 nav div.middle ul{
   font-size: 1em;
   padding: 0 5px;
