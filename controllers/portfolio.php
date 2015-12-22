@@ -10,6 +10,10 @@ class Portfolio extends Controller {
       $data['title'] = 'PORTFOLIO';
       $data['subtitle'] = 'PORTFOLIO';
       $data['menu_active'] = 'portfolio';
+      //get all kategories
+      $data['kategories'] = $this->_model->selectAll("kategories");
+      //get all albums
+      $data['albums'] = $this->_model->selectAll("albums");
 
       $this->_view->render('header', $data);
       $this->_view->render('partials/partials_header', $data);
@@ -59,5 +63,8 @@ class Portfolio extends Controller {
       $this->_view->render('partials/portfolio/album', $data);
       $this->_view->render('partials/partials_footer', $data);
       $this->_view->render('footer');
+  }
+  public function upload(){
+    echo "upload...";
   }
 }

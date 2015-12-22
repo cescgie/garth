@@ -10,7 +10,7 @@ class Portfolio_Model extends Model {
    * Show last 20 items in database
    */
    public function selectAll($table){
-     return $this->_db->select('SELECT * FROM '.$table.' ORDER BY id DESC LIMIT 0, 20');
+     return $this->_db->select('SELECT * FROM '.$table.' ORDER BY name ASC LIMIT 0, 20');
    }
 
    public function selectOne($table,$col,$val){

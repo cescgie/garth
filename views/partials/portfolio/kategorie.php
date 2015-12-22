@@ -1,9 +1,9 @@
 <div class="row">
   <div class="input-field col s12 l4 m5">
         <select id="list">
-          <option value="">Choose your option</option>
+          <option value="">Choose album</option>
           <?php foreach($data['albums']as $key=>$value): ?>
-            <option value="<?= $value['name'];?>"><?= $value['name'];?></option>
+            <option value="<?= $value['name'];?>"><?= ucfirst($value['name']);?></option>
           <?php endforeach; ?>
         </select>
   </div>

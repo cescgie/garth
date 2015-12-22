@@ -79,7 +79,9 @@ p {
     display:none;
   }
 }
-
+/*
+* mobile
+*/
 @media only screen and (max-width : 600px) {
   #index-banner .section {
     top: 0;
@@ -102,7 +104,12 @@ p {
   h4.h4-a a{
     color:black !important;
   }
-
+  .widget-upload .inside{
+    margin-bottom:10px !important;
+    margin-top:10px !important;
+    margin-left:10px !important;
+    margin-right:10px !important;
+  }
 }
 
 @media only screen and (min-width : 993px) {
@@ -280,4 +287,18 @@ h4.h4-a a:hover{
 }
 h4.h4-a a{
   color:white;
+}
+.widget-upload {
+  border: 1px solid #CCC;
+  margin-top: 10px;
+  background-color: #fff;
+}
+.widget-upload .inside{
+  margin-bottom:25px;
+  margin-top:25px;
+  margin-left:25px;
+  margin-right:25px;
+}
+.btn, .submit {
+  margin-right: 10px;
 }
