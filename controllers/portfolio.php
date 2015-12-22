@@ -65,6 +65,37 @@ class Portfolio extends Controller {
       $this->_view->render('footer');
   }
   public function upload(){
-    echo "upload...";
+    if(isset($_POST['newalbum']) && $_POST['newalbum']=='on'){
+      //create new album
+      if(isset($_POST['new_album_name']) && $_POST['kategorie_name']!=""){
+        print_r($_POST['new_album_name']);
+        print_r($_POST['kategorie_name']);
+      }else{
+        print_r("Please fill the form!");
+      }
+    }else{
+      //choose album
+      if($_POST['album_name']!=''){
+        print_r($_POST['album_name']);
+      }else{
+        print_r("Please fill the form!");
+      }
+    }
+    if(isset($_FILES["images"])){
+      for($i=0; $i<count($_FILES["images"]["name"]); $i++) {
+        $tmpFilePath = $_FILES["images"]['tmp_name'][$i];
+        if ($tmpFilePath != ""){
+          $newFilePath = "/assets/img/" . $_FILES["images"]["name"][$i];
+          $upload = move_uploaded_file($tmpFilePath, $newFilePath);
+          if($upload){
+            echo "sukses upload";
+          }else{
+            echo "gagal upload";
+          }
+        }
+      }
+    }else{
+      echo "no images";
+    }
   }
 }
