@@ -16,4 +16,8 @@ class Portfolio_Model extends Model {
    public function selectOne($table,$col,$val){
      return $this->_db->select('SELECT * FROM '.$table.' WHERE '.$col.' = "'.$val.'"');
    }
+
+   public function create($table,$data){
+     return $this->_db->insert($table, $data);
+   }
 }

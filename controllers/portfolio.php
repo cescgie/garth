@@ -70,32 +70,50 @@ class Portfolio extends Controller {
   public function upload(){
     if(isset($_POST['newalbum']) && $_POST['newalbum']=='on'){
       //create new album
-      if(isset($_POST['new_album_name']) && $_POST['kategorie_name']!=""){
-        $new_album_name = $_POST['new_album_name'];
-        $kategorie_name = $_POST['kategorie_name'];
+      if(isset($_POST['new_album_name']) && $_POST['new_album_name'] != ''){
+        $new_album_name = filter_var($_POST['new_album_name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+        $album['name'] = strtolower($new_album_name);
+      }else{
+        Message::set("Please choose a name for new album!","error");
+        URL::REDIRECT("portfolio");
+      }
+      if($_POST['kategorie_name'] != ''){
+        $kategorie_name = filter_var($_POST['kategorie_name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
         //get kategorie id
         $data['kategorie_id'] = $this->_model->selectOne("kategories","name",$kategorie_name);
         $kategorie_id = $data['kategorie_id'][0]['id'];
+        $album['kategorie_id'] = $kategorie_id;
       }else{
-        Message::set("Please fill the form!","error");
-        $this->index();
+        Message::set("Please choose a kategorie!","error");
+        URL::REDIRECT("portfolio");
       }
+      $create_new_album = $this->_model->create("albums",$album);
+      $data['album'] = $new_album_name;
+      $data['kategorie']=$kategorie_name;
     }else{
       //choose album
       if($_POST['album_name']!=''){
-        $album_name=$_POST['album_name'];
-        //get album id
-        $data['album_id'] = $this->_model->selectOne("albums","name",$album_name);
-        $album_id = $data['album_id'][0]['id'];
+        $album_name = filter_var($_POST['album_name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+        $data['album']=$album_name;
+        //get kategorie_id
+        $album = $this->_model->selectOne("albums","name",$album_name);
+        $kategorie_id = $album[0]['kategorie_id'];
+        //get kategorie name
+        $kategorie = $this->_model->selectOne("kategories","id",$kategorie_id);
+        $data['kategorie'] = $kategorie[0]['name'];
       }else{
-        Message::set("Please fill the form!","error");
-        $this->index();
+        Message::set("Please chosse an album!","error");
+        URL::REDIRECT("portfolio");
       }
     }
-    if(isset($_FILES["images"])){
-      $filename = $_FILES["images"]["name"];
-      for($i=0; $i<count($filename); $i++) {
-        $tmpFilePath = $_FILES["images"]['tmp_name'][$i];
+    /*echo "<pre>";
+    print_r("album :".$data['album']);
+    print_r("kategorie :".$data['kategorie']);
+    echo "</pre>";*/
+
+    if (!empty($_FILES)) {
+      for($i=0; $i<count($_FILES["images"]["name"]); $i++) {
+        $tmpFilePath = $_FILES["images"]['tmp_name'];
         if ($tmpFilePath != ""){
           $date = date('d-m-Y');
           $newfolder = getcwd()."/assets/collections/".$date;
@@ -103,17 +121,32 @@ class Portfolio extends Controller {
             mkdir($newfolder, 0777, true);
             chmod($newfolder,0777);
           }
-          $newFilePath = $newfolder ."/". $filename[$i];
-          /*$upload = move_uploaded_file($tmpFilePath, $newFilePath);
+          $size = $_FILES["images"]["size"][$i];
+          $newFilePath = $newfolder ."/". $_FILES["images"]["name"][$i];
+          $upload = move_uploaded_file($tmpFilePath[$i], $newFilePath);
+          $save = $this->insert($_FILES["images"]["name"][$i],$newFilePath,$data['album'],$data['kategorie'],$size);
           if($upload){
-            echo "success uploaded";
+            Message::set("Upload success",'success');
           }else{
-            echo "failed uploaded";
-          }*/
+            Message::set("Upload fail",'error');
+          }
+        }else{
+          Message::set('Please choose at least one image to upload','error');
         }
       }
-    }else{
-      echo "no images";
+      URL::REDIRECT("portfolio");
     }
+  }
+
+  public function insert($filename,$newFilePath,$album,$kategorie,$size){
+    $image['name'] = $filename;
+    $image['path'] = $newFilePath;
+    $image['album'] = $album;
+    $image['kategorie'] = $kategorie;
+    $image['size'] = $size;
+    $image['created_at'] = date("Y-m-d H:i:s");
+    //save to database
+    $save = $this->_model->create("images",$image);
+    return $save;
   }
 }

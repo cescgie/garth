@@ -13,7 +13,7 @@ class Admin extends Controller {
 
    public function login(){
      if(!empty($_POST['username']) && !empty($_POST['password'])){
-       $username = $_POST['username'];
+       $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
        $data["admin"] = $this->_model->check_admin("username",$username);
        if(!sizeof($data["admin"])){
          Message::set("There is no username with this value '".$_POST['username']."'","error");
@@ -29,7 +29,7 @@ class Admin extends Controller {
                Session::set("admin",$username);
                URL::REDIRECT("portfolio");
              }else{
-               Message::set("Password not matched","info");
+               Message::set("Password not matched","error");
                URL::REDIRECT("portfolio");
              }
            }else{
@@ -53,10 +53,9 @@ class Admin extends Controller {
        }else{
          Message::set("This account '".$value."' does not exist","error");
        }
-       URL::REDIRECT("portfolio");
      }else{
        Message::set("Please login first","info");
-       URL::REDIRECT("portfolio");
      }
+     URL::REDIRECT("portfolio");
    }
 }

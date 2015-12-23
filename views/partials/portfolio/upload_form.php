@@ -32,7 +32,7 @@
     <div class="file-field col s12">
       <div class="btn">
         <span>File</span>
-        <input type="file" name="images[]" multiple>
+        <input type="file" name="images[]" multiple="">
       </div>
       <div class="file-path-wrapper">
         <input class="file-path validate" type="text" placeholder="Upload one or more files">

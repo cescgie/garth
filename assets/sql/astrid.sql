@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 22. Dez 2015 um 10:34
+-- Erstellungszeit: 23. Dez 2015 um 13:49
 -- Server-Version: 5.6.24
 -- PHP-Version: 5.6.8
 
@@ -19,6 +19,28 @@ SET time_zone = "+00:00";
 --
 -- Datenbank: `astrid`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin`
+--
+
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int(10) NOT NULL,
+  `state` int(1) NOT NULL DEFAULT '0',
+  `username` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `password` varchar(50) NOT NULL,
+  `last_login` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `admin`
+--
+
+INSERT INTO `admin` (`id`, `state`, `username`, `email`, `password`, `last_login`) VALUES
+(1, 1, 'web5', NULL, 'sha256:1000:Vg1kBIXpYsoRRFYebYfikTSiGL8TuaHl:cl+ta', NULL);
 
 -- --------------------------------------------------------
 
@@ -61,13 +83,14 @@ INSERT INTO `albums` (`id`, `name`, `kategorie_id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `images` (
-  `id` int(111) unsigned NOT NULL,
+  `id` int(111) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `caption` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
+  `tags` varchar(255) DEFAULT NULL,
   `path` varchar(255) DEFAULT NULL,
-  `album_id` int(111) DEFAULT NULL,
-  `kategorie_id` int(111) DEFAULT NULL,
+  `album` varchar(50) DEFAULT NULL,
+  `kategorie` varchar(50) DEFAULT NULL,
   `size` bigint(100) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `edited_at` datetime NOT NULL
@@ -76,19 +99,19 @@ CREATE TABLE IF NOT EXISTS `images` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `kategorie`
+-- Tabellenstruktur für Tabelle `kategories`
 --
 
-CREATE TABLE IF NOT EXISTS `kategorie` (
+CREATE TABLE IF NOT EXISTS `kategories` (
   `id` int(11) NOT NULL,
   `name` varchar(50) COLLATE latin1_general_ci NOT NULL
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
--- Daten für Tabelle `kategorie`
+-- Daten für Tabelle `kategories`
 --
 
-INSERT INTO `kategorie` (`id`, `name`) VALUES
+INSERT INTO `kategories` (`id`, `name`) VALUES
 (1, 'architektur'),
 (2, 'landschaft'),
 (3, 'luftbilder'),
@@ -103,6 +126,12 @@ INSERT INTO `kategorie` (`id`, `name`) VALUES
 --
 
 --
+-- Indizes für die Tabelle `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indizes für die Tabelle `albums`
 --
 ALTER TABLE `albums`
@@ -115,15 +144,20 @@ ALTER TABLE `images`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indizes für die Tabelle `kategorie`
+-- Indizes für die Tabelle `kategories`
 --
-ALTER TABLE `kategorie`
+ALTER TABLE `kategories`
   ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT für exportierte Tabellen
 --
 
+--
+-- AUTO_INCREMENT für Tabelle `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT für Tabelle `albums`
 --
@@ -133,11 +167,11 @@ ALTER TABLE `albums`
 -- AUTO_INCREMENT für Tabelle `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(111) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(111) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT für Tabelle `kategorie`
+-- AUTO_INCREMENT für Tabelle `kategories`
 --
-ALTER TABLE `kategorie`
+ALTER TABLE `kategories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
