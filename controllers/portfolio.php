@@ -18,6 +18,9 @@ class Portfolio extends Controller {
       $this->_view->render('header', $data);
       $this->_view->render('partials/partials_header', $data);
       $this->_view->render('partials/portfolio/submenu', $data);
+      if(SESSION::get('admin')){
+        $this->_view->render('partials/portfolio/upload_form', $data);
+      }
       $this->_view->render('partials/portfolio/index', $data);
       $this->_view->render('partials/partials_footer', $data);
       $this->_view->render('footer');
