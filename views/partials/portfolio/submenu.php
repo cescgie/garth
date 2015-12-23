@@ -32,3 +32,5 @@
     </ul>
     <a href="#" data-activates="slide-out" class="button-collapse sub_ul_menu"><i class="mdi-navigation-menu"></i></a>
     </nav>
+    <br>
+    <?php echo Message::show(); ?>

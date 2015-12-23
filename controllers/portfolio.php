@@ -68,30 +68,45 @@ class Portfolio extends Controller {
     if(isset($_POST['newalbum']) && $_POST['newalbum']=='on'){
       //create new album
       if(isset($_POST['new_album_name']) && $_POST['kategorie_name']!=""){
-        print_r($_POST['new_album_name']);
-        print_r($_POST['kategorie_name']);
+        $new_album_name = $_POST['new_album_name'];
+        $kategorie_name = $_POST['kategorie_name'];
+        //get kategorie id
+        $data['kategorie_id'] = $this->_model->selectOne("kategories","name",$kategorie_name);
+        $kategorie_id = $data['kategorie_id'][0]['id'];
       }else{
-        print_r("Please fill the form!");
+        Message::set("Please fill the form!","error");
+        $this->index();
       }
     }else{
       //choose album
       if($_POST['album_name']!=''){
-        print_r($_POST['album_name']);
+        $album_name=$_POST['album_name'];
+        //get album id
+        $data['album_id'] = $this->_model->selectOne("albums","name",$album_name);
+        $album_id = $data['album_id'][0]['id'];
       }else{
-        print_r("Please fill the form!");
+        Message::set("Please fill the form!","error");
+        $this->index();
       }
     }
     if(isset($_FILES["images"])){
-      for($i=0; $i<count($_FILES["images"]["name"]); $i++) {
+      $filename = $_FILES["images"]["name"];
+      for($i=0; $i<count($filename); $i++) {
         $tmpFilePath = $_FILES["images"]['tmp_name'][$i];
         if ($tmpFilePath != ""){
-          $newFilePath = "/assets/img/" . $_FILES["images"]["name"][$i];
-          $upload = move_uploaded_file($tmpFilePath, $newFilePath);
-          if($upload){
-            echo "sukses upload";
-          }else{
-            echo "gagal upload";
+          $date = date('d-m-Y');
+          $newfolder = getcwd()."/assets/collections/".$date;
+          if(!is_dir($newfolder)){
+            mkdir($newfolder, 0777, true);
+            chmod($newfolder,0777);
           }
+          $newFilePath = $newfolder ."/". $filename[$i];
+          /*$upload = move_uploaded_file($tmpFilePath, $newFilePath);
+          if($upload){
+            echo "success uploaded";
+          }else{
+            echo "failed uploaded";
+          }*/
         }
       }
     }else{

@@ -1,6 +1,6 @@
 <div class="parallax-container outside">
   <div class="parallax"><img src="/assets/img/background2.jpg"></div>
-  <footer class="page-footer inside">
+  <footer class="page-footer inside home">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">

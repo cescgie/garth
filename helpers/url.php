@@ -4,18 +4,18 @@ class URL {
 
   /*
   * @param : url,status
-  * @use : URL::redirect(url,status)
+  * @use : URL::REDIRECT(url,status)
   */
-   public static function redirect($url = null, $status) {
-      header('Location: ' . DIR . $url, true, $status);
+   public static function REDIRECT($url = null, $param = null, $status) {
+      header('Location: ' . DIR . $url . $param, true, $status);
       exit;
    }
 
    /*
    * @param : filename,type
-   * @use : URL::halt()
+   * @use : URL::HALT()
    */
-   public static function halt($status = 404, $message = 'Something went wrong.') {
+   public static function HALT($status = 404, $message = 'Something went wrong.') {
       if (ob_get_level() !== 0) {
           ob_clean();
       }
