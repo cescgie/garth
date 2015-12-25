@@ -71,7 +71,8 @@ class Portfolio extends Controller {
       //create new album
       if(isset($_POST['new_album_name']) && $_POST['new_album_name'] != ''){
         $new_album_name = filter_var($_POST['new_album_name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-        $album['name'] = strtolower($new_album_name);
+        $new_album_name = strtolower($new_album_name);
+        $album['name'] = $new_album_name;
       }else{
         Message::set("Please choose a name for new album!","error");
         URL::REDIRECT("portfolio");
@@ -86,7 +87,10 @@ class Portfolio extends Controller {
         Message::set("Please choose a kategorie!","error");
         URL::REDIRECT("portfolio");
       }
-      $create_new_album = $this->_model->create("albums",$album);
+      $check = $this->_model->check_exist("albums","name",$new_album_name);
+      if($check[0]['count'] != 1){
+        $create_new_album = $this->_model->create("albums",$album);
+      }
       $data['album'] = $new_album_name;
       $data['kategorie']=$kategorie_name;
     }else{
@@ -105,13 +109,15 @@ class Portfolio extends Controller {
         URL::REDIRECT("portfolio");
       }
     }
-    /*echo "<pre>";
-    print_r("album :".$data['album']);
-    print_r("kategorie :".$data['kategorie']);
-    echo "</pre>";*/
 
     if (!empty($_FILES)) {
+      $total_upload = count($_FILES["images"]["name"]);
+      $count_current_in_album = $this->_model->count("images",'album',$data['album']);
+      $total_current_in_album = $count_current_in_album[0]['total'];
+
+      //echo rand($total_current_in_album + 1, $total_current_in_album + $total_upload);
       for($i=0; $i<count($_FILES["images"]["name"]); $i++) {
+        $next_reihenfolge = $total_current_in_album + $i + 1;
         $tmpFilePath = $_FILES["images"]['tmp_name'];
         if ($tmpFilePath != ""){
           $date = date('d-m-Y');
@@ -123,7 +129,7 @@ class Portfolio extends Controller {
           $size = $_FILES["images"]["size"][$i];
           $newFilePath = $newfolder ."/". $_FILES["images"]["name"][$i];
           $upload = move_uploaded_file($tmpFilePath[$i], $newFilePath);
-          $save = $this->insert($_FILES["images"]["name"][$i],$newFilePath,$data['album'],$data['kategorie'],$size);
+          $save = $this->insert($_FILES["images"]["name"][$i],$newFilePath,$data['album'],$data['kategorie'],$size, $next_reihenfolge);
           if($upload){
             Message::set("Upload success",'success');
           }else{
@@ -137,7 +143,8 @@ class Portfolio extends Controller {
     }
   }
 
-  public function insert($filename,$newFilePath,$album,$kategorie,$size){
+  public function insert($filename,$newFilePath,$album,$kategorie,$size,$reihenfolge){
+    $image['reihenfolge'] = $reihenfolge;
     $image['name'] = $filename;
     $image['path'] = $newFilePath;
     $image['album'] = $album;
@@ -161,17 +168,20 @@ class Portfolio extends Controller {
     $data['sub_menu_active'] = $kategorie;
     $data['album_name'] = $album;
 
-    $data['count_images'] = $this->_model->count("images",$album);
+    $data['count_images'] = $this->_model->count("images",'album',$album);
     $total = $data['count_images'][0]['total'];
     $data['first_image'] = $this->_model->selectRow("images","album",$album,"reihenfolge","ASC",1);
     $first_image = $data['first_image'][0]['reihenfolge'];
 
-    if($reihenfolge == $total){
+    if($reihenfolge == $total && $total != 1 ){
       $next_id = $first_image;
       $prev_id = $total - 1;
-    }elseif($reihenfolge == $first_image){
+    }elseif($reihenfolge == $first_image && $total != 1){
       $next_id = $first_image + 1;
       $prev_id = $total;
+    }elseif($reihenfolge == $total && $total == 1){
+      $next_id = 1;
+      $prev_id = 1;
     }else{
       $next_id = $reihenfolge + 1;
       $prev_id = $reihenfolge - 1;
@@ -180,7 +190,9 @@ class Portfolio extends Controller {
     $data['next_photo_id'] = $next_id;
     $data['prev_photo_id'] = $prev_id;
 
-    $data['show_foto'] = $this->_model->selectOne("images","reihenfolge",$reihenfolge);
+    $data['show_foto'] = $this->_model->selectOne3Clauses("images","album",$album,"kategorie",$kategorie,"reihenfolge",$reihenfolge);
+    $foto_name = $data['show_foto'][0]['name'];
+    $data['foto_name'] = preg_replace('/\\.[^.\\s]{3,4}$/', '', $foto_name);
 
     $this->_view->render('header', $data);
     $this->_view->render('partials/partials_header', $data);

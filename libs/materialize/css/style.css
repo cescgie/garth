@@ -371,3 +371,7 @@ h4.h4-a a{
   padding: 0 1em;
   margin-right: 0px;
 }
+#image_show_id{
+  width:100%;
+  max-width: 500px;
+}

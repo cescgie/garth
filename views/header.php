@@ -5,6 +5,7 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="msapplication-tap-highlight" content="no">
    <meta name="description" content="Astrid Garth">
+   <meta name="keywords" content="<?= $data['subtitle'].','.$data['kategorie'].','.$data['album'].','.$data['foto_name'];?>"> 
    <title><?= $data['title'] . ' - ' . SITETITLE ?></title>
    <link rel="shortcut icon" href="http://www.astrid-garth.de//bilder/favicon.ico"/>
    <!-- Compiled and minified CSS -->

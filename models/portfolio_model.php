@@ -21,11 +21,19 @@ class Portfolio_Model extends Model {
      return $this->_db->insert($table, $data);
    }
 
-   public function count($table,$album){
-     return $this->_db->select('SELECT count(*) as total FROM '.$table.' WHERE album = "'.$album.'"');
+   public function count($table,$col,$val){
+     return $this->_db->select('SELECT count(*) as total FROM '.$table.' WHERE '.$col.' = "'.$val.'"');
    }
 
    public function selectRow($table,$col,$val,$group_by,$row,$limit){
      return $this->_db->select('SELECT * FROM '.$table.' WHERE '.$col.' = "'.$val.'" GROUP BY '.$group_by.' ' .$row.' LIMIT '.$limit.'');
+   }
+
+   public function selectOne3Clauses($table,$col1,$val1,$col2,$val2,$col3,$val3){
+     return $this->_db->select('SELECT * FROM '.$table.' WHERE '.$col1.' = "'.$val1.'" AND '.$col2.' = "'.$val2.'" AND '.$col3.' = "'.$val3.'" ');
+   }
+
+   public function check_exist($table,$col,$val){
+     return $this->_db->select('SELECT count(*) as count FROM '.$table.' WHERE '.$col.' = "'.$val.'"');
    }
 }
