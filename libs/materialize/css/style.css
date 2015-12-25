@@ -363,3 +363,11 @@ h4.h4-a a{
    color:#eee;
    font-size: 10px;
 }
+.foto_album{
+  margin-bottom: 20px;
+}
+
+.btn-navigator{
+  padding: 0 1em;
+  margin-right: 0px;
+}

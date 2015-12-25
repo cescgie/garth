@@ -148,4 +148,45 @@ class Portfolio extends Controller {
     $save = $this->_model->create("images",$image);
     return $save;
   }
+
+  public function show(){
+    $album = $_GET['album'];
+    $reihenfolge = $_GET['reihenfolge'];
+    $kategorie = $_GET['kategorie'];
+    $data['title'] = 'PORTFOLIO | '.strtoupper($kategorie).' | '.strtoupper($name);
+    $data['subtitle'] = 'portfolio';
+    $data['kategorie'] = $kategorie;
+    $data['album'] = $album;
+    $data['menu_active'] = 'portfolio';
+    $data['sub_menu_active'] = $kategorie;
+    $data['album_name'] = $album;
+
+    $data['count_images'] = $this->_model->count("images",$album);
+    $total = $data['count_images'][0]['total'];
+    $data['first_image'] = $this->_model->selectRow("images","album",$album,"reihenfolge","ASC",1);
+    $first_image = $data['first_image'][0]['reihenfolge'];
+
+    if($reihenfolge == $total){
+      $next_id = $first_image;
+      $prev_id = $total - 1;
+    }elseif($reihenfolge == $first_image){
+      $next_id = $first_image + 1;
+      $prev_id = $total;
+    }else{
+      $next_id = $reihenfolge + 1;
+      $prev_id = $reihenfolge - 1;
+    }
+
+    $data['next_photo_id'] = $next_id;
+    $data['prev_photo_id'] = $prev_id;
+
+    $data['show_foto'] = $this->_model->selectOne("images","reihenfolge",$reihenfolge);
+
+    $this->_view->render('header', $data);
+    $this->_view->render('partials/partials_header', $data);
+    $this->_view->render('partials/portfolio/submenu', $data);
+    $this->_view->render('partials/portfolio/image', $data);
+    $this->_view->render('partials/partials_footer', $data);
+    $this->_view->render('footer');
+  }
 }
