@@ -8,7 +8,7 @@ class Portfolio extends Controller {
 
    public function index() {
       $data['title'] = 'PORTFOLIO';
-      $data['subtitle'] = 'PORTFOLIO';
+      $data['subtitle'] = 'portfolio';
       $data['menu_active'] = 'portfolio';
       //get all kategories
       $data['kategories'] = $this->_model->selectAll("kategories");
@@ -27,7 +27,8 @@ class Portfolio extends Controller {
    }
    public function kategorie($name){
       $data['title'] = 'PORTFOLIO | '.strtoupper($name);
-      $data['subtitle'] = 'PORTFOLIO | '.strtoupper($name);
+      $data['subtitle'] = 'portfolio';
+      $data['kategorie'] = $name;
       $data['menu_active'] = 'portfolio';
       $data['sub_menu_active'] = $name;
       $data['kategorie_name'] = $name;
@@ -48,17 +49,15 @@ class Portfolio extends Controller {
       $name = $_GET['album'];
       $kategorie = $_GET['kategorie'];
       $data['title'] = 'PORTFOLIO | '.strtoupper($kategorie).' | '.strtoupper($name);
-      $data['subtitle'] = 'PORTFOLIO | '.strtoupper($kategorie).' | '.strtoupper($name);
+      $data['subtitle'] = 'portfolio';
+      $data['kategorie'] = $kategorie;
+      $data['album'] = $name;
       $data['menu_active'] = 'portfolio';
       $data['sub_menu_active'] = $kategorie;
       $data['album_name'] = $name;
 
-      //get album id
-      $data['album_id'] = $this->_model->selectOne("albums","name",$name);
-      $album_id = $data['album_id'][0]['id'];
-
       //get all images from one album
-      $data['images'] = $this->_model->selectOne("images","album_id",$album_id);
+      $data['images'] = $this->_model->selectOne("images","album",$name);
 
       $this->_view->render('header', $data);
       $this->_view->render('partials/partials_header', $data);
