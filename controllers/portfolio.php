@@ -56,8 +56,12 @@ class Portfolio extends Controller {
       $data['sub_menu_active'] = $kategorie;
       $data['album_name'] = $name;
 
+      //get album id
+      $album = $this->_model->selectOne("albums","name",$name);
+      $album_id = $album[0]['id'];
+
       //get all images from one album
-      $data['images'] = $this->_model->selectOne("images","album",$name);
+      $data['images'] = $this->_model->selectOne("images","album_id",$album_id);
 
       $this->_view->render('header', $data);
       $this->_view->render('partials/partials_header', $data);
@@ -66,119 +70,44 @@ class Portfolio extends Controller {
       $this->_view->render('partials/partials_footer', $data);
       $this->_view->render('footer');
   }
-  public function upload(){
-    if(isset($_POST['newalbum']) && $_POST['newalbum']=='on'){
-      //create new album
-      if(isset($_POST['new_album_name']) && $_POST['new_album_name'] != ''){
-        $new_album_name = filter_var($_POST['new_album_name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-        $new_album_name = strtolower($new_album_name);
-        $album['name'] = $new_album_name;
-      }else{
-        Message::set("Please choose a name for new album!","error");
-        URL::REDIRECT("portfolio");
-      }
-      if($_POST['kategorie_name'] != ''){
-        $kategorie_name = filter_var($_POST['kategorie_name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-        //get kategorie id
-        $data['kategorie_id'] = $this->_model->selectOne("kategories","name",$kategorie_name);
-        $kategorie_id = $data['kategorie_id'][0]['id'];
-        $album['kategorie_id'] = $kategorie_id;
-      }else{
-        Message::set("Please choose a kategorie!","error");
-        URL::REDIRECT("portfolio");
-      }
-      $check = $this->_model->check_exist("albums","name",$new_album_name);
-      if($check[0]['count'] != 1){
-        $create_new_album = $this->_model->create("albums",$album);
-      }
-      $data['album'] = $new_album_name;
-      $data['kategorie']=$kategorie_name;
-    }else{
-      //choose album
-      if($_POST['album_name']!=''){
-        $album_name = filter_var($_POST['album_name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-        $data['album']=$album_name;
-        //get kategorie_id
-        $album = $this->_model->selectOne("albums","name",$album_name);
-        $kategorie_id = $album[0]['kategorie_id'];
-        //get kategorie name
-        $kategorie = $this->_model->selectOne("kategories","id",$kategorie_id);
-        $data['kategorie'] = $kategorie[0]['name'];
-      }else{
-        Message::set("Please chosse an album!","error");
-        URL::REDIRECT("portfolio");
-      }
-    }
-
-    if (!empty($_FILES)) {
-      $total_upload = count($_FILES["images"]["name"]);
-      $count_current_in_album = $this->_model->count("images",'album',$data['album']);
-      $total_current_in_album = $count_current_in_album[0]['total'];
-
-      //echo rand($total_current_in_album + 1, $total_current_in_album + $total_upload);
-      for($i=0; $i<count($_FILES["images"]["name"]); $i++) {
-        $next_reihenfolge = $total_current_in_album + $i + 1;
-        $tmpFilePath = $_FILES["images"]['tmp_name'];
-        if ($tmpFilePath != ""){
-          $date = date('d-m-Y');
-          $newfolder = getcwd()."/assets/collections/".$date;
-          if(!is_dir($newfolder)){
-            mkdir($newfolder, 0777, true);
-            chmod($newfolder,0777);
-          }
-          $size = $_FILES["images"]["size"][$i];
-          $newFilePath = $newfolder ."/". $_FILES["images"]["name"][$i];
-          $upload = move_uploaded_file($tmpFilePath[$i], $newFilePath);
-          $save = $this->insert($_FILES["images"]["name"][$i],$newFilePath,$data['album'],$data['kategorie'],$size, $next_reihenfolge);
-          if($upload){
-            Message::set("Upload success",'success');
-          }else{
-            Message::set("Upload fail",'error');
-          }
-        }else{
-          Message::set('Please choose at least one image to upload','error');
-        }
-      }
-      URL::REDIRECT("portfolio");
-    }
-  }
-
-  public function insert($filename,$newFilePath,$album,$kategorie,$size,$reihenfolge){
-    $image['reihenfolge'] = $reihenfolge;
-    $image['name'] = $filename;
-    $image['path'] = $newFilePath;
-    $image['album'] = $album;
-    $image['kategorie'] = $kategorie;
-    $image['size'] = $size;
-    $image['created_at'] = date("Y-m-d H:i:s");
-    //save to database
-    $save = $this->_model->create("images",$image);
-    return $save;
-  }
 
   public function show(){
-    $album = $_GET['album'];
+    $album_id = $_GET['album_id'];
     $reihenfolge = $_GET['reihenfolge'];
-    $kategorie = $_GET['kategorie'];
-    $data['title'] = 'PORTFOLIO | '.strtoupper($kategorie).' | '.strtoupper($name);
-    $data['subtitle'] = 'portfolio';
-    $data['kategorie'] = $kategorie;
-    $data['album'] = $album;
-    $data['menu_active'] = 'portfolio';
-    $data['sub_menu_active'] = $kategorie;
-    $data['album_name'] = $album;
+    $kategorie_id = $_GET['kategorie_id'];
 
-    $data['count_images'] = $this->_model->count("images",'album',$album);
+    //get album's name
+    $albums = $this->_model->selectOne("albums","id",$album_id);
+    $album_name = $albums[0]['name'];
+    $data['album'] = $album_name;
+
+    //get kategorie's name
+    $kategories = $this->_model->selectOne("kategories","id",$kategorie_id);
+    $kategorie_name = $kategories[0]['name'];
+    $data['kategorie'] = $kategorie_name;
+
+    $data['title'] = 'PORTFOLIO | '.strtoupper($kategorie_name).' | '.strtoupper($album_name);
+    $data['subtitle'] = 'portfolio';
+    $data['kategorie_id'] = $kategorie_id;
+    $data['album_id'] = $album_id;
+    $data['menu_active'] = 'portfolio';
+    $data['sub_menu_active'] = $kategorie_name;
+    $data['album_name'] = $album_name;
+
+    $data['count_images'] = $this->_model->count("images",'album_id',$album_id);
     $total = $data['count_images'][0]['total'];
-    $data['first_image'] = $this->_model->selectRow("images","album",$album,"reihenfolge","ASC",1);
+    $data['first_image'] = $this->_model->selectRow("images","album_id",$album_id,"reihenfolge","ASC",1);
     $first_image = $data['first_image'][0]['reihenfolge'];
 
+    //if reihenfolge as much as toal image, means the last images in row but total image not 1
     if($reihenfolge == $total && $total != 1 ){
       $next_id = $first_image;
       $prev_id = $total - 1;
+    //if reihenfolge same with first image and total images is not 1, means the first image in a row
     }elseif($reihenfolge == $first_image && $total != 1){
       $next_id = $first_image + 1;
       $prev_id = $total;
+    //if reihenfolge same with total imags and total image is only 1, means the only one image in album
     }elseif($reihenfolge == $total && $total == 1){
       $next_id = 1;
       $prev_id = 1;
@@ -190,7 +119,8 @@ class Portfolio extends Controller {
     $data['next_photo_id'] = $next_id;
     $data['prev_photo_id'] = $prev_id;
 
-    $data['show_foto'] = $this->_model->selectOne3Clauses("images","album",$album,"kategorie",$kategorie,"reihenfolge",$reihenfolge);
+    //get selected image
+    $data['show_foto'] = $this->_model->selectOne3Clauses("images","album_id",$album_id,"kategorie_id",$kategorie_id,"reihenfolge",$reihenfolge);
     $foto_name = $data['show_foto'][0]['name'];
     $data['foto_name'] = preg_replace('/\\.[^.\\s]{3,4}$/', '', $foto_name);
 
@@ -201,4 +131,122 @@ class Portfolio extends Controller {
     $this->_view->render('partials/partials_footer', $data);
     $this->_view->render('footer');
   }
+
+  public function upload(){
+    if(SESSION::get('admin')){
+      if(isset($_POST['newalbum']) && $_POST['newalbum']=='on'){
+        //create new album
+        if(isset($_POST['new_album_name']) && $_POST['new_album_name'] != ''){
+          $new_album_name = filter_var($_POST['new_album_name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+          $new_album_name = strtolower($new_album_name);
+
+          //album name for create new album
+          $create['name'] = $new_album_name;
+        }else{
+          Message::set("Please choose a name for new album!","error");
+          URL::REDIRECT("portfolio");
+        }
+        if($_POST['kategorie_name'] != ''){
+          $kategorie_name = filter_var($_POST['kategorie_name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+
+          //get kategorie id
+          $kategorie = $this->_model->selectOne("kategories","name",$kategorie_name);
+          $kategorie_id = $kategorie[0]['id'];
+
+          //kategorie id for upload new image(s)
+          $upload['kategorie_id'] = $kategorie_id;
+
+          //kategorie id for create new album
+          $create['kategorie_id'] = $kategorie_id;
+        }else{
+          Message::set("Please choose a kategorie!","error");
+          URL::REDIRECT("portfolio");
+        }
+        //check if album already exists
+        $check = $this->_model->check_exist("albums","name",$new_album_name);
+        if($check[0]['count'] != 1){
+
+          //create new album
+          $create_new_album = $this->_model->create("albums",$create);
+
+          //get new album id
+          $album = $this->_model->selectOne("albums","name",$new_album_name);
+          $album_id = $album[0]['id'];
+
+          //album id for upload new image(s)
+          $upload['album_id'] = $album_id;
+        }
+      }else{
+        //choose album
+        if($_POST['album_name']!=''){
+          $album_name = filter_var($_POST['album_name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+
+          //get album id
+          $album = $this->_model->selectOne("albums","name",$album_name);
+          $album_id = $album[0]['id'];
+
+          //album id for upload new image(s)
+          $upload['album_id'] = $album_id;
+
+          //get kategorie_id
+          $kategorie = $this->_model->selectOne("albums","name",$album_name);
+          $kategorie_id = $kategorie[0]['kategorie_id'];
+
+          //kategorie id for upload new image(s)
+          $upload['kategorie_id'] = $kategorie_id;
+        }else{
+          Message::set("Please chosse an album!","error");
+          URL::REDIRECT("portfolio");
+        }
+      }
+
+      if (!empty($_FILES)) {
+        $total_upload = count($_FILES["images"]["name"]);
+        $count_current_in_album = $this->_model->count("images",'album_id',$upload['album_id']);
+        $total_current_in_album = $count_current_in_album[0]['total'];
+
+        for($i=0; $i<count($_FILES["images"]["name"]); $i++) {
+          $next_reihenfolge = $total_current_in_album + $i + 1;
+          $tmpFilePath = $_FILES["images"]['tmp_name'];
+          if ($tmpFilePath != ""){
+            $date = date('d-m-Y');
+            $newfolder = getcwd()."/assets/collections/".$date;
+            if(!is_dir($newfolder)){
+              mkdir($newfolder, 0777, true);
+              chmod($newfolder,0777);
+            }
+            $size = $_FILES["images"]["size"][$i];
+            $newFilePath = $newfolder ."/". $_FILES["images"]["name"][$i];
+            $uploads = move_uploaded_file($tmpFilePath[$i], $newFilePath);
+            $save = $this->insert($_FILES["images"]["name"][$i],$newFilePath,$upload['album_id'],$upload['kategorie_id'],$size, $next_reihenfolge);
+            if($uploads){
+              Message::set("Upload success",'success');
+            }else{
+              Message::set("Upload fail",'error');
+            }
+          }else{
+            Message::set('Please choose at least one image to upload','error');
+          }
+        }
+        URL::REDIRECT("portfolio");
+      }
+    }else{
+      Message::set("You don't have authorization to use this function",'error');
+      URL::REDIRECT("portfolio");
+    }
+  }
+
+  public function insert($filename,$newFilePath,$album_id,$kategorie_id,$size,$reihenfolge){
+    $image['reihenfolge'] = $reihenfolge;
+    $image['name'] = $filename;
+    $image['path'] = $newFilePath;
+    $image['album_id'] = $album_id;
+    $image['kategorie_id'] = $kategorie_id;
+    $image['size'] = $size;
+    $image['created_at'] = date("Y-m-d H:i:s");
+    //save to database
+    $save = $this->_model->create("images",$image);
+    return $save;
+  }
+
 }

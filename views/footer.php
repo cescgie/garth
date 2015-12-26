@@ -15,8 +15,6 @@
         <a class="grey-text text-lighten-4 right modal-trigger" style="color:black" href="#modal_login">
           <?php if(SESSION::get('admin')){
             echo SESSION::get('admin');
-          }else{
-            echo "0";
           }?>
           Netpoint-Media
         </a>
