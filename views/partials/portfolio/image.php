@@ -4,6 +4,9 @@
       <td class="left">
         <a id="prev_action" href="<?php DIR ?>show?album=<?= $data['album'];?>&kategorie=<?= $data['kategorie'];?>&reihenfolge=<?= $data['prev_photo_id'];?>#image_show" class="waves-effect waves-light btn btn-navigator"><i class="material-icons left">skip_previous</i>zurrück</a>
       </td>
+      <td class="center">
+        <?= $data['foto_name'];?>
+      </td>
       <td class="right">
         <a id="next_action" href="<?php DIR ?>show?album=<?= $data['album'];?>&kategorie=<?= $data['kategorie'];?>&reihenfolge=<?= $data['next_photo_id'];?>#image_show" class="waves-effect waves-light btn btn-navigator"><i class="material-icons right">skip_next</i>nächste</a>
       </td>
