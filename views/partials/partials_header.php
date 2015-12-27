@@ -9,10 +9,10 @@
               <?php if($data['subtitle'] != '' && $data['subtitle'] == 'portfolio') {?>
                  <a href="<?= DIR.$data['subtitle'];?>"><?php echo strtoupper($data['subtitle']);?></a>
                  <?php if($data['kategorie'] != '') {?>
-                   <span class="span_submenu">Kategorie</span>
+                   <!--<span class="span_submenu">Oberkategorie</span>-->
                   | <a href="<?= DIR.$data['subtitle'].'/kategorie/'.$data['kategorie'];?>"><?php echo strtoupper($data['kategorie']);?></a>
                   <?php if($data['album'] != '') {?>
-                    <span class="span_submenu">Album</span>
+                    <!--<span class="span_submenu">Kategorie</span>-->
                     | <a href="<?= DIR.$data['subtitle'].'/album?album='.$data['album'].'&kategorie='.$data['kategorie'];?>"><?php echo strtoupper($data['album']);?></a>
                   <?php }
                   }?>

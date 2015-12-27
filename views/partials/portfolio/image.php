@@ -4,16 +4,17 @@
       <td class="left">
         <a id="prev_action" href="<?php DIR ?>show?album_id=<?= $data['album_id'];?>&kategorie_id=<?= $data['kategorie_id'];?>&reihenfolge=<?= $data['prev_photo_id'];?>#image_show" class="waves-effect waves-light btn btn-navigator"><i class="material-icons left">skip_previous</i>zurrück</a>
       </td>
-      <td class="center">
-        <?= $data['foto_name'];?>
-      </td>
       <td class="right">
         <a id="next_action" href="<?php DIR ?>show?album_id=<?= $data['album_id'];?>&kategorie_id=<?= $data['kategorie_id'];?>&reihenfolge=<?= $data['next_photo_id'];?>#image_show" class="waves-effect waves-light btn btn-navigator"><i class="material-icons right">skip_next</i>nächste</a>
       </td>
     </tr>
   </table>
   <?php foreach($data['show_foto']as $key=>$value): ?>
-    <center><img id="image_show_id" class="materialboxed responsive-img z-depth-3" data-caption="<?php echo $value['name'];?>" src="<?= DIR."assets/collections/".date('d-m-Y', strtotime($value['created_at']))."/".$value['name']; ?>"></center>
+    <center><img id="image_show_id" class="materialboxed responsive-img z-depth-3" data-caption="<?php echo $value['title'];?>" src="<?= DIR."assets/collections/".date('d-m-Y', strtotime($value['created_at']))."/".$value['name']; ?>"></center><br>
+    <div class="center">
+      <h4><?= $value['title'];?></h4>
+      <p><?= $value['description'];?></p>
+    </div>
   <?php endforeach; ?>
 </div>
 

@@ -36,4 +36,12 @@ class Portfolio_Model extends Model {
    public function check_exist($table,$col,$val){
      return $this->_db->select('SELECT count(*) as count FROM '.$table.' WHERE '.$col.' = "'.$val.'"');
    }
+
+   public function delete($table,$clause){
+     return $this->_db->delete($table,$clause);
+   }
+
+   public function update($table,$data,$where){
+     return $this->_db->update($table,$data,$where);
+   }
 }

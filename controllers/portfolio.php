@@ -124,6 +124,8 @@ class Portfolio extends Controller {
     $foto_name = $data['show_foto'][0]['name'];
     $data['foto_name'] = preg_replace('/\\.[^.\\s]{3,4}$/', '', $foto_name);
 
+    $data['keywords'] = $data['show_foto'][0]['keywords'];
+
     $this->_view->render('header', $data);
     $this->_view->render('partials/partials_header', $data);
     $this->_view->render('partials/portfolio/submenu', $data);
@@ -208,6 +210,8 @@ class Portfolio extends Controller {
         for($i=0; $i<count($_FILES["images"]["name"]); $i++) {
           $next_reihenfolge = $total_current_in_album + $i + 1;
           $tmpFilePath = $_FILES["images"]['tmp_name'];
+          //$upload['title'] = preg_replace('/\\.[^.\\s]{3,4}$/', '', $_FILES["images"]["name"][$i]);
+
           if ($tmpFilePath != ""){
             $date = date('d-m-Y');
             $newfolder = getcwd()."/assets/collections/".$date;
@@ -217,8 +221,10 @@ class Portfolio extends Controller {
             }
             $size = $_FILES["images"]["size"][$i];
             $newFilePath = $newfolder ."/". $_FILES["images"]["name"][$i];
+            $foto_name = $_FILES["images"]["name"][$i];
+            $upload['title'] = preg_replace('/\\.[^.\\s]{3,4}$/', '', $foto_name);
             $uploads = move_uploaded_file($tmpFilePath[$i], $newFilePath);
-            $save = $this->insert($_FILES["images"]["name"][$i],$newFilePath,$upload['album_id'],$upload['kategorie_id'],$size, $next_reihenfolge);
+            $save = $this->insert($_FILES["images"]["name"][$i],$newFilePath,$upload['album_id'],$upload['kategorie_id'],$upload['title'],$size, $next_reihenfolge);
             if($uploads){
               Message::set("Upload success",'success');
             }else{
@@ -236,9 +242,10 @@ class Portfolio extends Controller {
     }
   }
 
-  public function insert($filename,$newFilePath,$album_id,$kategorie_id,$size,$reihenfolge){
+  public function insert($filename,$newFilePath,$album_id,$kategorie_id,$title,$size,$reihenfolge){
     $image['reihenfolge'] = $reihenfolge;
     $image['name'] = $filename;
+    $image['title'] = $title;
     $image['path'] = $newFilePath;
     $image['album_id'] = $album_id;
     $image['kategorie_id'] = $kategorie_id;
@@ -249,4 +256,40 @@ class Portfolio extends Controller {
     return $save;
   }
 
+  public function delete(){
+    $id = $_POST['id'];
+    $album_id = $_POST['album_id'];
+    $image = $this->_model->selectOne("images","id",$id);
+
+    if(SESSION::get('admin')){
+      $delete = $this->_model->delete("images","id=$id");
+      unlink($image[0]['path']);
+
+      //get all images from one album
+      $images = $this->_model->selectOne("images","album_id",$album_id);
+      $i = 1;
+      foreach ($images as $key => $value) {
+        #update reihenfolge
+        $data['reihenfolge'] = $i;
+        $id = $value['id'];
+        $this->_model->update("images",$data,"id=$id");
+        $i++;
+      }
+    }
+    echo json_encode($images);
+  }
+
+  public function edit(){
+    $edit['id'] = $_POST['id'];
+    $edit['title'] = $_POST['title'];
+    $edit['keywords'] = filter_var($_POST['keywords'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+    $edit['edited_at'] = date("Y-m-d H:i:s");
+    $edit['description'] = filter_var($_POST['description'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+
+    if(SESSION::get('admin')){
+      $id = $_POST['id'];
+      $this->_model->update("images",$edit,"id=$id");
+    }
+    echo json_encode($edit);
+  }
 }
