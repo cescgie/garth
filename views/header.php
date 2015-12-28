@@ -3,9 +3,12 @@
 <head>
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta http-equiv="content-language" content="de"/>
    <meta name="msapplication-tap-highlight" content="no">
-   <meta name="description" content="Astrid Garth">
-   <meta name="keywords" content="<?= $data['subtitle'].','.$data['kategorie'].','.$data['album'].','.$data['foto_name'].','.$data['keywords'];?>"> 
+   <meta name="author" content="Astrid Garth"/>
+   <meta name="robots" content="all"/>
+   <meta name="description" content="Astrid Garth"/>
+   <meta name="keywords" lang="de" content="<?= $data['meta'];?>"/>
    <title><?= $data['title'] . ' - ' . SITETITLE ?></title>
    <link rel="shortcut icon" href="http://www.astrid-garth.de//bilder/favicon.ico"/>
    <!-- Compiled and minified CSS -->

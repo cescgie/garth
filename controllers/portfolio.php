@@ -14,6 +14,8 @@ class Portfolio extends Controller {
       $data['kategories'] = $this->_model->selectAll("kategories");
       //get all albums
       $data['albums'] = $this->_model->selectAll("albums");
+      //meta tag
+      $data['meta'] = SITETITLE;
 
       $this->_view->render('header', $data);
       $this->_view->render('partials/partials_header', $data);
@@ -32,9 +34,14 @@ class Portfolio extends Controller {
       $data['menu_active'] = 'portfolio';
       $data['sub_menu_active'] = $name;
       $data['kategorie_name'] = $name;
+
+      //meta tag
+      $data['meta'] = SITETITLE.','.$data['kategorie'];
+
       //get kategorie id
       $data['kategorie_id'] = $this->_model->selectOne("kategories","name",$name);
       $kategorie_id = $data['kategorie_id'][0]['id'];
+
       //get all albums from one kategorie
       $data['albums'] = $this->_model->selectOne("albums","kategorie_id",$kategorie_id);
 
@@ -55,6 +62,9 @@ class Portfolio extends Controller {
       $data['menu_active'] = 'portfolio';
       $data['sub_menu_active'] = $kategorie;
       $data['album_name'] = $name;
+
+      //meta tag
+      $data['meta'] = SITETITLE.','.$data['kategorie'].','.$data['album'];
 
       //get album id
       $album = $this->_model->selectOne("albums","name",$name);
@@ -123,8 +133,11 @@ class Portfolio extends Controller {
     $data['show_foto'] = $this->_model->selectOne3Clauses("images","album_id",$album_id,"kategorie_id",$kategorie_id,"reihenfolge",$reihenfolge);
     $foto_name = $data['show_foto'][0]['name'];
     $data['foto_name'] = preg_replace('/\\.[^.\\s]{3,4}$/', '', $foto_name);
-
+    //get keywords
     $data['keywords'] = $data['show_foto'][0]['keywords'];
+
+    //meta tag
+    $data['meta'] = SITETITLE.','.$data['kategorie'].','.$data['album'].','.$data['foto_name'].','.$data['keywords'];
 
     $this->_view->render('header', $data);
     $this->_view->render('partials/partials_header', $data);

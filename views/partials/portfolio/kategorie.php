@@ -12,7 +12,7 @@
             </a>
           </div>
           <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4"><?= ucwords($value['name']);?><i class="material-icons right">more_vert</i></span>
+            <span class="card-title activator grey-text text-darken-4"><p class="activator"><?= ucwords($value['name']);?><i class="material-icons right">more_vert</i></p></span>
           </div>
           <div class="card-reveal">
             <span class="card-title grey-text text-darken-4"><?= ucwords($value['name']);?><i class="material-icons right">close</i></span>

@@ -12,7 +12,9 @@
             </a>
           </div>
           <div class="card-content">
-            <p class="card-title activator grey-text text-darken-4 center"><?= $value['title'];?></p>
+            <a href="<?php DIR ?>show?album_id=<?= $value['album_id'];?>&kategorie_id=<?= $value['kategorie_id'];?>&reihenfolge=<?= $value['reihenfolge'];?>">
+              <p class="card-title activator grey-text text-darken-4 center"><?= $value['title'];?></p>
+            </a>
             <?php if(SESSION::get('admin')) :?>
               <a class="modal-trigger waves-effect waves-light btn btn-navigator" style="background-color:#1e88e5" href="#modalEdit<?= $value['id'];?>">Edit</a>
               <a class="modal-trigger waves-effect waves-light btn btn-navigator" style="background-color:#ff5252;" href="#modalDelete<?= $value['id'];?>">Delete</a>
