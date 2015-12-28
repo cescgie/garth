@@ -25,8 +25,8 @@ class Admin extends Controller {
            $username = $value['username'];
            if($value['state']==1){
              if(Password::validate($password,$hash_password)){
-               Message::set("Welcome back admin","success");
                Session::set("admin",$username);
+               Message::set("Herzlich Wilkommen ".Session::get('admin')."!","success");
                URL::REDIRECT("portfolio");
              }else{
                Message::set("Password not matched","error");

@@ -14,9 +14,11 @@
         <!-- Modal Trigger -->
         <a class="grey-text text-lighten-4 right modal-trigger" style="color:black" href="#modal_login">
           <?php if(SESSION::get('admin')){
-            echo SESSION::get('admin');
-          }?>
-          Netpoint-Media
+            echo SESSION::get('admin'); ?>
+            Logout
+          <?php }else{?>
+            Login
+          <?php }?>
         </a>
 
         <!-- Modal Structure -->

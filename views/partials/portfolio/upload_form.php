@@ -31,7 +31,7 @@
 
     <div class="file-field col s12">
       <div class="btn">
-        <span>File</span>
+        <span>Datei</span>
         <input type="file" name="images[]" multiple="">
       </div>
       <div class="file-path-wrapper">
@@ -39,7 +39,7 @@
       </div>
     </div>
 
-    <input type="submit" class="right btn submit" value="Upload">
+    <input type="submit" class="right btn submit" value="Hochladen">
 
   </div>
 </form>

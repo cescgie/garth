@@ -1,3 +1,3 @@
   <p>
-    To make images resize responsively to page width, you can add the class responsive-img to your image tag. It will now have a max-width: 100% and height:auto.
+    Lorem ipsum dolor sit amet, case falli vim ut, eos verear debitis at, id ius amet dicat tritani. Ius congue tantas omnesque ne. Nam ei vocent audire conceptam. Mutat dignissim appellantur qui te. Quodsi dolorem id duo, per doming commodo sadipscing eu, velit inani contentiones pro et.
   </p>

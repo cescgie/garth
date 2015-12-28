@@ -381,3 +381,35 @@ h4.h4-a a{
 .card .card-content{
   padding: 2px;
 }
+.div_kontakt{
+  margin-top: 50px;
+}
+.p_kontakt{
+  line-height: 1em;
+}
+.vita_h4{
+  text-align: right;
+  margin-bottom: 1em;
+  margin-top: 2em;
+}
+.vita_year{
+  vertical-align: top;
+}
+blockquote{
+  border-left:5px solid #2bbbad;
+}
+.strong{
+  font-weight: bold;
+}
+a.a_links{
+  color:black ;
+}
+a.a_links:active, a.a_links:hover{
+  color: #2bbbad;
+}
+.card-title{
+  font-size: 20px !important;
+}
+.card-title:active, .card-title:hover{
+  color: #2bbbad !important;
+}
