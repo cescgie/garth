@@ -305,4 +305,11 @@ class Portfolio extends Controller {
     }
     echo json_encode($edit);
   }
+
+  public function editKategorie(){
+    $edit['id'] = $_POST['id'];
+    $formData = $_FILES['files']['name'];
+    //$file = $_FILES["kategorie_cover"]["name"];
+    echo $formData;
+  }
 }

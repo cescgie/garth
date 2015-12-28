@@ -12,7 +12,7 @@
         © 2015 Copyright Astrid Garth
 
         <!-- Modal Trigger -->
-        <a class="grey-text text-lighten-4 right modal-trigger" style="color:black" href="#modal_login">
+        <a class="grey-text text-lighten-4 right modal-trigger-footer" style="color:black" href="#modal_login_footer">
           <?php if(SESSION::get('admin')){
             echo SESSION::get('admin'); ?>
             Logout
@@ -22,7 +22,7 @@
         </a>
 
         <!-- Modal Structure -->
-        <div id="modal_login" class="modal">
+        <div id="modal_login_footer" class="modal">
           <?php if (!Session::get('admin')):?>
           <div class="modal-content">
             <form action="<?= DIR ?>admin/login" autocomplete="off" method="POST">
@@ -53,7 +53,7 @@
     <script type="text/javascript">
     $(document).ready(function(){
       // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-      $('.modal-trigger').leanModal({
+      $('.modal-trigger-footer').leanModal({
         dismissible: true, // Modal can be dismissed by clicking outside of the modal
         opacity: .5, // Opacity of modal background
         in_duration: 300, // Transition in duration
@@ -66,6 +66,35 @@
         } // Callback for Modal close
       });
     });
+    //edit Images
+    $('.modal-trigger-Image').leanModal({
+        dismissible: true, // Modal can be dismissed by clicking outside of the modal
+        opacity: .5, // Opacity of modal background
+        in_duration: 300, // Transition in duration
+        out_duration: 200, // Transition out duration
+        ready: function() {
+          console.log('Ready');
+        }, // Callback for Modal open
+        complete: function() {
+          console.log('Closed');
+        } // Callback for Modal close
+      }
+    );
+    //edit oberkategorie
+    $('.modal-trigger-kategorie').leanModal({
+        dismissible: true, // Modal can be dismissed by clicking outside of the modal
+        opacity: .5, // Opacity of modal background
+        in_duration: 300, // Transition in duration
+        out_duration: 200, // Transition out duration
+        ready: function() {
+          console.log('Ready');
+        }, // Callback for Modal open
+        complete: function() {
+          console.log('Closed');
+        } // Callback for Modal close
+      }
+    );
     </script>
+
   </body>
 </html>

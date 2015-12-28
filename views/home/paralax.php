@@ -1,5 +1,5 @@
 <div class="parallax-container">
-  <div class="parallax"><img src="/assets/img/background3.jpg"></div>
+  <div class="parallax"><img src="<?= DIR ?>assets/img/background3.jpg"></div>
 </div>
 <div class="container">
   <div class="section">

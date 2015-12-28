@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col l6 m6">
     <div class="vita_h4 z-depth-2">
-      <img class="materialboxed" src="/assets/img/background1.jpg" width="100%" height="400px" alt="vita img"/>
+      <img class="materialboxed" src="<?= DIR ?>assets/img/background1.jpg" width="100%" height="400px" alt="vita img"/>
     </div>
     <h4 class="vita_h4 strong">VERÖFFENTLICHUNGEN</h4>
     <blockquote>

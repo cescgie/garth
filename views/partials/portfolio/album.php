@@ -6,9 +6,9 @@
       <?php foreach($data['images']as $key=>$value): ?>
       <div class="col l4 m4 foto_album">
         <div class="card">
-          <div class="card-image waves-effect waves-block waves-light">
+          <div class="card-image waves-effect waves-block waves-light hoverable">
             <a href="<?php DIR ?>show?album_id=<?= $value['album_id'];?>&kategorie_id=<?= $value['kategorie_id'];?>&reihenfolge=<?= $value['reihenfolge'];?>">
-              <img class="responsive-img z-depth-3 activator" data-caption="A picture of some deer and tons of trees" width="100%" src="<?= DIR."assets/collections/".date('d-m-Y', strtotime($value['created_at']))."/".$value['name']; ?>">
+              <img class="responsive-img hoverable z-depth-3 activator" data-caption="A picture of some deer and tons of trees" width="100%" src="<?= DIR."assets/collections/".date('d-m-Y', strtotime($value['created_at']))."/".$value['name']; ?>">
             </a>
           </div>
           <div class="card-content">
@@ -16,8 +16,8 @@
               <p class="card-title activator grey-text text-darken-4 center"><?= $value['title'];?></p>
             </a>
             <?php if(SESSION::get('admin')) :?>
-              <a class="modal-trigger waves-effect waves-light btn btn-navigator" style="background-color:#1e88e5" href="#modalEdit<?= $value['id'];?>">Edit</a>
-              <a class="modal-trigger waves-effect waves-light btn btn-navigator" style="background-color:#ff5252;" href="#modalDelete<?= $value['id'];?>">Delete</a>
+              <a class="modal-trigger-Image waves-effect waves-light btn btn-navigator" style="background-color:#1e88e5" href="#modalEdit<?= $value['id'];?>">Edit</a>
+              <a class="modal-trigger-Image waves-effect waves-light btn btn-navigator" style="background-color:#ff5252;" href="#modalDelete<?= $value['id'];?>">Delete</a>
               <!-- Modal Edit Structure -->
               <div id="modalEdit<?= $value['id'];?>" class="modal modal-fixed-footer">
                 <div class="modal-content">
@@ -64,20 +64,6 @@
 </div>
 
   <script type="text/javascript">
-    $('.modal-trigger').leanModal({
-        dismissible: true, // Modal can be dismissed by clicking outside of the modal
-        opacity: .5, // Opacity of modal background
-        in_duration: 300, // Transition in duration
-        out_duration: 200, // Transition out duration
-        ready: function() {
-          console.log('Ready');
-        }, // Callback for Modal open
-        complete: function() {
-          console.log('Closed');
-        } // Callback for Modal close
-      }
-    );
-
    function confirmDelete(id,album_id){
      console.log("id : "+album_id);
      $.ajax({
