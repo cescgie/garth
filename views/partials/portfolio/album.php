@@ -1,10 +1,9 @@
 <div class="row">
-  <div class="col l12 s12">
     <?php if(!sizeof($data['images'])) :?>
       <p>No Data</p>
     <?php else:?>
       <?php foreach($data['images']as $key=>$value): ?>
-      <div class="col l4 m4 foto_album">
+      <div class="col s12 m6 l6 foto_album">
         <div class="card">
           <div class="card-image waves-effect waves-block waves-light hoverable">
             <a href="<?php DIR ?>show?album_id=<?= $value['album_id'];?>&kategorie_id=<?= $value['kategorie_id'];?>&reihenfolge=<?= $value['reihenfolge'];?>">
@@ -13,7 +12,7 @@
           </div>
           <div class="card-content">
             <a href="<?php DIR ?>show?album_id=<?= $value['album_id'];?>&kategorie_id=<?= $value['kategorie_id'];?>&reihenfolge=<?= $value['reihenfolge'];?>">
-              <p class="card-title activator grey-text text-darken-4 center"><?= $value['title'];?></p>
+              <p class="center activator grey-text text-darken-4 "><?= ucfirst($value['title']); ?></p>
             </a>
             <?php if(SESSION::get('admin')) :?>
               <a class="modal-trigger-Image waves-effect waves-light btn btn-navigator" style="background-color:#1e88e5" href="#modalEdit<?= $value['id'];?>">Edit</a>
@@ -60,7 +59,6 @@
         </div>
       <?php endforeach; ?>
     <?php endif;?>
-  </div>
 </div>
 
   <script type="text/javascript">

@@ -19,7 +19,7 @@ class Portfolio extends Controller {
 
       $this->_view->render('header', $data);
       $this->_view->render('partials/partials_header', $data);
-      $this->_view->render('partials/portfolio/submenu', $data);
+      //$this->_view->render('partials/portfolio/submenu', $data);
       if(SESSION::get('admin')){
         $this->_view->render('partials/portfolio/upload_form', $data);
       }
@@ -32,7 +32,7 @@ class Portfolio extends Controller {
       $data['subtitle'] = 'portfolio';
       $data['kategorie'] = $name;
       $data['menu_active'] = 'portfolio';
-      $data['sub_menu_active'] = $name;
+      //$data['sub_menu_active'] = $name;
       $data['kategorie_name'] = $name;
 
       //meta tag
@@ -47,7 +47,7 @@ class Portfolio extends Controller {
 
       $this->_view->render('header', $data);
       $this->_view->render('partials/partials_header', $data);
-      $this->_view->render('partials/portfolio/submenu', $data);
+      //$this->_view->render('partials/portfolio/submenu', $data);
       $this->_view->render('partials/portfolio/kategorie', $data);
       $this->_view->render('partials/partials_footer', $data);
       $this->_view->render('footer');
@@ -60,7 +60,7 @@ class Portfolio extends Controller {
       $data['kategorie'] = $kategorie;
       $data['album'] = $name;
       $data['menu_active'] = 'portfolio';
-      $data['sub_menu_active'] = $kategorie;
+      //$data['sub_menu_active'] = $kategorie;
       $data['album_name'] = $name;
 
       //meta tag
@@ -75,7 +75,7 @@ class Portfolio extends Controller {
 
       $this->_view->render('header', $data);
       $this->_view->render('partials/partials_header', $data);
-      $this->_view->render('partials/portfolio/submenu', $data);
+      //$this->_view->render('partials/portfolio/submenu', $data);
       $this->_view->render('partials/portfolio/album', $data);
       $this->_view->render('partials/partials_footer', $data);
       $this->_view->render('footer');
@@ -101,7 +101,7 @@ class Portfolio extends Controller {
     $data['kategorie_id'] = $kategorie_id;
     $data['album_id'] = $album_id;
     $data['menu_active'] = 'portfolio';
-    $data['sub_menu_active'] = $kategorie_name;
+    //$data['sub_menu_active'] = $kategorie_name;
     $data['album_name'] = $album_name;
 
     $data['count_images'] = $this->_model->count("images",'album_id',$album_id);
@@ -141,7 +141,7 @@ class Portfolio extends Controller {
 
     $this->_view->render('header', $data);
     $this->_view->render('partials/partials_header', $data);
-    $this->_view->render('partials/portfolio/submenu', $data);
+    //$this->_view->render('partials/portfolio/submenu', $data);
     $this->_view->render('partials/portfolio/image', $data);
     $this->_view->render('partials/partials_footer', $data);
     $this->_view->render('footer');
