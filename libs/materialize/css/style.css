@@ -210,6 +210,7 @@ h4{
   border-color: black;
   margin-top: -10px;
   padding: 20px 10px;
+  margin-bottom: 30px;
 }
 .widget-body {
   border: 1px solid #CCC;
@@ -401,6 +402,10 @@ h4.h4-a a{
 .vita_year{
   vertical-align: top;
 }
+.vita_img{
+  width:100%;
+  height:500px;
+}
 blockquote{
   border-left:5px solid #2bbbad;
 }
@@ -408,7 +413,7 @@ blockquote{
   font-weight: bold;
 }
 a.a_links{
-  color:black ;
+  color:#fff;
 }
 a.a_links:active, a.a_links:hover{
   color: #2bbbad;
@@ -418,4 +423,16 @@ a.a_links:active, a.a_links:hover{
 }
 .card-title:active, .card-title:hover{
   color: #2bbbad !important;
+}
+.icon-color{
+  color: #000;
+}
+.input-field .prefix.active{
+  color: #26a69a;
+}
+button, input, optgroup, select, textarea{
+  color: #000;
+}
+footer.page-footer{
+  padding-top: 0px;
 }

@@ -25,7 +25,7 @@ set_exception_handler('logger::exception_handler');
 set_error_handler('logger::error_handler');
 
 $app = new Bootstrap();
-$app->setController('home');
+$app->setController('portfolio');
 $app->init();
 
 ob_flush();
