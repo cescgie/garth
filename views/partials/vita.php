@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col l6 m6">
-    <div class="vita_h4 z-depth-2">
-      <center><img class="materialboxed vita_img" src="<?= DIR ?>assets/portfolio/Astrid.jpg" alt="vita img"/></center>
+    <div class="vita_h4 z-depth-2" style="position:relative">
+      <center><img style="border-color:white;width:80%;margin:auto" class="responsive-img hoverable z-depth-3" src="<?= DIR ?>assets/portfolio/Astrid.jpg" alt="vita img"/></center>
     </div>
     <h4 class="vita_h4 strong">VERÖFFENTLICHUNGEN</h4>
     <blockquote>

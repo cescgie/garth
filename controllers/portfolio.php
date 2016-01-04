@@ -306,10 +306,31 @@ class Portfolio extends Controller {
     echo json_encode($edit);
   }
 
-  public function editKategorie(){
-    $edit['id'] = $_POST['id'];
-    $formData = $_FILES['files']['name'];
-    //$file = $_FILES["kategorie_cover"]["name"];
-    echo $formData;
+  public function editKategorie($id){
+    $edit['id'] = $id;
+
+    //get info from one kategorie
+    $kategorie = $this->_model->selectOne("kategories","id",$id);
+
+    //set name
+    if(isset($_POST['name']) && $_POST['name']!=''){
+      $edit['name'] = strtolower(filter_var($_POST['name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH));
+    }else{
+      $edit['name'] = $kategorie[0]['name'];
+    }
+
+    //set cover
+    if(isset($_POST['newcover']) && $_POST['newcover']=='on'){
+      if(!empty($_FILES['kategorie_cover']['name'])){
+        $formData = $_FILES['kategorie_cover']['name'];
+        $edit['image'] = $_FILES['kategorie_cover']['name'];
+      }else{
+        echo "no kosong";
+        $edit['image'] = $kategorie[0]['image'];
+      }
+    }else{
+      $edit['image'] = $kategorie[0]['image'];
+    }
+    print_r($edit);
   }
 }
