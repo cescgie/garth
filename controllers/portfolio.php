@@ -310,27 +310,38 @@ class Portfolio extends Controller {
     $edit['id'] = $id;
 
     //get info from one kategorie
-    $kategorie = $this->_model->selectOne("kategories","id",$id);
-
-    //set name
-    if(isset($_POST['name']) && $_POST['name']!=''){
-      $edit['name'] = strtolower(filter_var($_POST['name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH));
-    }else{
-      $edit['name'] = $kategorie[0]['name'];
-    }
-
-    //set cover
-    if(isset($_POST['newcover']) && $_POST['newcover']=='on'){
-      if(!empty($_FILES['kategorie_cover']['name'])){
-        $formData = $_FILES['kategorie_cover']['name'];
-        $edit['image'] = $_FILES['kategorie_cover']['name'];
+    $kategorie = $this->_model->selectOne("albums","id",$id);
+    //get oberkategorie
+    $oberkategorie_id = $kategorie[0]['kategorie_id'];
+    $oberkategorie =$this->_model->selectOne("kategories","id",$oberkategorie_id);
+    if(SESSION::get('admin')){
+      //set name
+      if(isset($_POST['name']) && $_POST['name']!=''){
+        $edit['name'] = strtolower(filter_var($_POST['name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH));
       }else{
-        echo "no kosong";
+        $edit['name'] = $kategorie[0]['name'];
+      }
+
+      //set cover
+      if(isset($_POST['newcover'.$id]) && $_POST['newcover'.$id]=='on'){
+        if(!empty($_FILES['kategorie_cover'.$id]['name'])){
+          $nama = $_FILES['kategorie_cover'.$id]['name'];
+          $tmp_name = $_FILES['kategorie_cover'.$id]['tmp_name'];
+          $newFilePath = 'assets/kategorie/'.$nama;
+          $edit['image'] = DIR.$newFilePath;
+          $uploads = move_uploaded_file($tmp_name, $newFilePath);
+        }else{
+          //"no image";
+          $edit['image'] = $kategorie[0]['image'];
+        }
+      }else{
         $edit['image'] = $kategorie[0]['image'];
       }
+      $this->_model->update("albums",$edit,"id=$id");
+      Message::set('Kategorie aktualisiert!','success');
     }else{
-      $edit['image'] = $kategorie[0]['image'];
+      Message::set('Sie haben kein Recht!','info');
     }
-    print_r($edit);
+    URL::REDIRECT("portfolio/kategorie/".$oberkategorie[0]['name']);
   }
 }
