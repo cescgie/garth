@@ -382,8 +382,9 @@ h4.h4-a a{
   border:2px solid #fff;
 }
 .card .card-image img{
-  height: 250px;
   border:2px solid #fff;
+  min-height: 200px;
+  max-height: 225px;
 }
 .card .card-content{
   padding: 2px;
@@ -435,4 +436,14 @@ button, input, optgroup, select, textarea{
 }
 footer.page-footer{
   padding-top: 0px;
+}
+.card{
+  width:80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10%;
+}
+input#submit_kontakt, .submit_kontakt{
+  color:white;
+  padding:1px 10px;
 }

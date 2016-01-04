@@ -25,27 +25,28 @@
       </div>
 
       <div class="widget-upload" style="margin-top:50px;">
-        <form>
+        <?php echo Message::show(); ?>
+        <form action="<?= DIR?>kontakt/send" method="post">
           <div class="row">
             <div class="col l12 m12 s12">
-                <h4 class="strong center">Kontaktformular</h4>
+                <h4 class="strong center" style="color:#000">Kontaktformular</h4>
                 <div class="input-field col s12">
                   <i class="material-icons prefix icon-color">account_circle</i>
-                  <input id="name" type="text" class="validate">
+                  <input id="name" type="text" name="name" class="validate">
                   <label for="name">Name</label>
                 </div>
                 <div class="input-field col s12">
                   <i class="material-icons prefix icon-color">email</i>
-                    <input id="email" type="email" class="validate">
+                    <input id="email" type="email" name="email" class="validate">
                     <label for="email">Email</label>
                 </div>
                 <div class="input-field col s12">
                   <i class="material-icons prefix icon-color">mode_edit</i>
-                  <textarea id="textarea1" class="materialize-textarea" length="500"></textarea>
-                  <label for="textarea1">Textarea</label>
+                  <textarea id="textarea_kontakt" name="textarea_kontakt" class="materialize-textarea" length="500"></textarea>
+                  <label for="textarea_kontakt">Textarea</label>
                 </div>
                 <div class="right">
-                  <button class="btn waves-effect waves-light" type="submit" name="action">Absenden<i class="material-icons right">send</i></button>
+                  <input class="btn waves-effect waves-light submit_kontakt" type="submit" value="Absenden" id="submit_kontakt">
                 </div>
             </div>
           </div>
