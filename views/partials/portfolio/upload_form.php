@@ -1,3 +1,4 @@
+<?php echo Message::show(); ?>
 <div class="widget-upload">
   <div class="inside">
     <p>Neues Bild hochladen</p>

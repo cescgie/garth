@@ -6,14 +6,14 @@
        <?php
        $i=1;
        foreach ($data['albums'] as $key => $value) :?>
-        <div class="col s12 m6">
+        <div class="col s12 m4 l3">
           <div class="card">
-              <div class="card-image waves-effect waves-block waves-light" style="position:relative;min-height:250px;">
+              <div class="card-image waves-effect waves-block waves-light kategorie-image">
                 <center><a href="<?= DIR ?>portfolio/album?album=<?= $value['name'];?>&kategorie=<?= $data['kategorie_name'];?>">
                   <?php if($value['image']==NULL):?>
-                    <img style="border-color:white;width:80%;position:absolute;margin:auto" class="responsive-img hoverable z-depth-3" src="<?= DIR ?>assets/img/background1.jpg">
+                    <img style="border-color:white;width:90%;position:absolute;margin:auto" class="responsive-img hoverable z-depth-3" src="<?= DIR ?>assets/img/background1.jpg">
                   <?php else:?>
-                    <img style="border-color:white;width:80%;position:absolute;margin:auto" class="responsive-img hoverable z-depth-3" src="<?= $value['image'];?>">
+                    <img style="border-color:white;width:90%;position:absolute;margin:auto" class="responsive-img hoverable z-depth-3" src="<?= $value['image'];?>">
                   <?php endif;?>
                 </a></center>
               </div>

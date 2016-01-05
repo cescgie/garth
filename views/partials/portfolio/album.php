@@ -4,11 +4,11 @@
       <p>No Data</p>
     <?php else:?>
       <?php foreach($data['images']as $key=>$value): ?>
-      <div class="col s12 m6 l6 foto_album">
+      <div class="col s12 m4 l3 foto_album">
         <div class="card">
-          <div class="card-image waves-effect waves-block waves-light" style="position:relative;min-height:250px;">
+          <div class="card-image waves-effect waves-block waves-light album-image">
             <center><a href="<?php DIR ?>show?album_id=<?= $value['album_id'];?>&kategorie_id=<?= $value['kategorie_id'];?>&reihenfolge=<?= $value['reihenfolge'];?>">
-              <img style="border-color:white;width:80%;position:absolute;margin:auto" class="responsive-img hoverable z-depth-3 activator" data-caption="A picture of some deer and tons of trees" src="<?= DIR."assets/collections/".date('d-m-Y', strtotime($value['created_at']))."/".$value['name']; ?>">
+              <img style="border-color:white;width:90%;position:absolute;margin:auto" class="responsive-img hoverable z-depth-3 activator" data-caption="A picture of some deer and tons of trees" src="<?= DIR."assets/collections/".date('d-m-Y', strtotime($value['created_at']))."/".$value['name']; ?>">
             </a></center>
           </div>
           <div class="card-content">

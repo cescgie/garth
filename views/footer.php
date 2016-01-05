@@ -1,7 +1,7 @@
     <footer class="page-footer">
       <div class="footer-copyright">
         <div class="container">
-        © 2015 Copyright Astrid Garth
+        © 2016 Copyright Astrid Garth
 
         <!-- Modal Trigger -->
         <a class="grey-text text-lighten-4 right modal-trigger-footer" style="color:black" href="#modal_login_footer">

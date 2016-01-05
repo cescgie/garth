@@ -10,7 +10,7 @@ body {
    display: flex;
    min-height: 100vh;
    flex-direction: column;
-   background-color: #E2DFDE;
+   background-color:#E2DFDE;
 }
 
 main {
@@ -48,117 +48,6 @@ p {
 
 .parallax-container .section {
     width: 100%;
-}
-
-@media only screen and (max-width : 992px) {
-  .parallax-container .section {
-    position: absolute;
-    top: 40%;
-  }
-  #index-banner .section {
-    top: 10%;
-  }
-  .middle-nav{
-    display: block;
-  }
-  .partial{
-    margin-top: 50px;
-  }
-  nav ul a{
-    font-size: 1em !important;
-  }
-}
-
-@media only screen and (min-width : 600px) {
-  .middle-nav{
-    display: block;
-  }
-  .button-collapse{
-    display:none;
-  }
-  #nav-middle{
-    display:none;
-  }
-}
-/*
-* mobile
-*/
-@media only screen and (max-width : 600px) {
-  #index-banner .section {
-    top: 0;
-  }
-  .middle-nav{
-    display: none;
-  }
-  .button-collapse{
-    display:block;
-  }
-  .partial{
-    margin-top:50px;
-  }
-  .h4-div{
-    font-size: 12px;
-    color:#fff;
-    background-color: #000 !important;
-    padding-top: 18px !important;
-  }
-  h4.h4-a a{
-    color:#fff !important;
-  }
-  .widget-upload .inside{
-    margin-bottom:10px !important;
-    margin-top:10px !important;
-    margin-left:10px !important;
-    margin-right:10px !important;
-  }
-  .span_submenu {
-     position: absolute;
-     top: 0;
-     bottom: 0;
-     overflow: hidden;
-     color:black !important;
-     font-size: 10px;
-  }
-  .btn-navigator{
-    padding: 0 0.5em;
-    margin-right: 0px;
-  }
-}
-
-@media only screen and (min-width : 993px) {
-  .mobile-nav {
-    display : block;
-    margin:top:80px;
-    color:white;
-  }
-  .logo-media {
-    display : none;
-  }
-  .middle-nav {
-    display: none;
-  }
-  .partial{
-    margin-top:50px;
-  }
-  .tabs .tab a{
-    width:100%;
-  }
-}
-@media only screen and (min-width : 993px) and (max-width : 1057px){
-  .shown{
-    width:100%;
-    max-width: 400px;
-    font-size: 0.8em;
-    float:right;
-  }
-  .tabs .tab{
-    width: 100%;
-    min-width: 50px;
-  }
-  .row .col.s2.deskt{
-    width: 16% !important;
-    text-align: center;
-  }
 }
 
 .icon-block {
@@ -211,7 +100,7 @@ h4{
   border-color: black;
   margin-top: -10px;
   padding: 20px 10px;
-  margin-bottom: 30px;
+  margin-bottom:30px;
 }
 .widget-body {
   border: 1px solid #CCC;
@@ -374,7 +263,7 @@ h4.h4-a a{
 }
 
 .btn-navigator{
-  padding: 0 1em;
+  padding: 0 0.5em;
   margin-right: 0px;
 }
 #image_show_id{
@@ -384,8 +273,6 @@ h4.h4-a a{
 }
 .card .card-image img{
   border:2px solid #fff;
-  /*min-height: 200px;
-  max-height: 225px;*/
 }
 .card .card-content{
   padding: 2px;
@@ -405,8 +292,8 @@ h4.h4-a a{
   vertical-align: top;
 }
 .vita_img{
-  width:100%;
-  height:500px;
+  width: 100%;
+  height:450px;
 }
 blockquote{
   border-left:5px solid #2bbbad;
@@ -436,15 +323,186 @@ button, input, optgroup, select, textarea{
   color: #000;
 }
 footer.page-footer{
-  padding-top: 0px;
+  padding-top:0px;
 }
-/*.card{
-  width:80%;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 10%;
-}*/
 input#submit_kontakt, .submit_kontakt{
   color:white;
   padding:1px 10px;
+}
+.container{
+  width:90%;
+}
+.index-image{
+ position:relative;
+ height:100%;
+ min-height:200px;
+}
+.kategorie-image{
+ position:relative;
+ height:100%;
+ min-height:200px;
+}
+.album-image{
+  position:relative;
+  height:100%;
+  min-height:200px;
+}
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+  .middle-nav{
+    display: block;
+  }
+  .partial{
+    margin-top: 50px;
+  }
+  nav ul a{
+    font-size: 1em !important;
+  }
+}
+
+@media only screen and (min-width : 600px) {
+  .middle-nav{
+    display: block;
+  }
+  .button-collapse{
+    display:none;
+  }
+  #nav-middle{
+    display:none;
+  }
+}
+/*
+* mobile
+*/
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+  .middle-nav{
+    display: none;
+  }
+  .button-collapse{
+    display:block;
+  }
+  .partial{
+    margin-top:50px;
+  }
+  .h4-div{
+    font-size: 12px;
+    color:#fff;
+    background-color: #000 !important;
+    padding-top: 18px !important;
+  }
+  h4.h4-a a{
+    color:#fff !important;
+  }
+  .widget-upload .inside{
+    margin-bottom:10px !important;
+    margin-top:10px !important;
+    margin-left:10px !important;
+    margin-right:10px !important;
+  }
+  .span_submenu {
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     overflow: hidden;
+     color:black !important;
+     font-size: 10px;
+  }
+  .index-image{
+ 	position:relative;
+ 	height:100%;
+ 	min-height:225px;
+   }
+  .album-image{
+   position:relative;
+   height:100%;
+   min-height:240px;
+  }
+  .kategorie-image{
+   position:relative;
+   height:100%;
+   min-height:240px;
+  }
+}
+
+@media only screen and (min-width : 993px) {
+  .mobile-nav {
+    display : block;
+    margin:top:80px;
+    color:white;
+  }
+  .logo-media {
+    display : none;
+  }
+  .middle-nav {
+    display: none;
+  }
+  .partial{
+    margin-top:50px;
+  }
+  .tabs .tab a{
+    width:100%;
+  }
+}
+@media only screen and (min-width : 993px) and (max-width : 1057px){
+  .shown{
+    width:100%;
+    max-width: 400px;
+    font-size: 0.8em;
+    float:right;
+  }
+  .tabs .tab{
+    width: 100%;
+    min-width: 50px;
+  }
+  .row .col.s2.deskt{
+    width: 16% !important;
+    text-align: center;
+  }
+  .album-image{
+   position:relative;
+   height:100%;
+   min-height:240px;
+  }
+  .kategorie-image{
+   position:relative;
+   height:100%;
+   min-height:240px;
+  }
+}
+@media only screen and (min-width : 1057px) and (max-width : 1240px){
+	.album-image{
+	 position:relative;
+	 height:100%;
+ 	min-height:250px;
+	}
+	.kategorie-image{
+	 position:relative;
+	 height:100%;
+	 min-height:250px;
+	}
+}
+@media only screen and (min-width : 1240px) {
+	.album-image{
+	 position:relative;
+	 height:100%;
+ 	 min-height:300px;
+	}
+	.kategorie-image{
+	 position:relative;
+	 height:100%;
+	 min-height:275px;
+	}
+	.h4-div{
+	 margin-left:6px;
+	}
 }
