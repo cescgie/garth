@@ -20,7 +20,7 @@
               <div class="card-content">
                 <p class="center activator grey-text text-darken-4 "><?= ucwords($value['name']); ?></p>
                 <?php if(SESSION::get('admin')) :?>
-                  <a class="modal-trigger waves-effect waves-light btn btn-navigator" style="background-color:#1e88e5" href="#modal<?=$value['id']?>">Edit</a>
+                  <a class="modal-trigger-editKategorie waves-effect waves-light btn btn-navigator" style="background-color:#1e88e5" href="#modal<?=$value['id']?>">Edit</a>
                 <?php endif; ?>
               </div>
           </div>
@@ -79,7 +79,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
   //trigger modal
-  $('.modal-trigger').leanModal();
+  $('.modal-trigger-editKategorie').leanModal();
 });
 $('a#editForm').click(function(){
   console.log($(this).attr('album_id'));
