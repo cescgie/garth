@@ -1,4 +1,5 @@
 <div class="row">
+    <?php echo Message::show(); ?>
     <?php if(!sizeof($data['images'])) :?>
       <p>No Data</p>
     <?php else:?>

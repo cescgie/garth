@@ -326,9 +326,15 @@ class Portfolio extends Controller {
       if(isset($_POST['newcover'.$id]) && $_POST['newcover'.$id]=='on'){
         if(!empty($_FILES['kategorie_cover'.$id]['name'])){
           $nama = $_FILES['kategorie_cover'.$id]['name'];
+          //get file extention
+          $ext = pathinfo($nama, PATHINFO_EXTENSION);
+          //temporary path
           $tmp_name = $_FILES['kategorie_cover'.$id]['tmp_name'];
-          $newFilePath = 'assets/kategorie/'.$nama;
+          $newFilePath = 'assets/kategorie/'.$edit['name'].'.'.$ext;
           $edit['image'] = DIR.$newFilePath;
+          //remove old image from path
+          unlink(getcwd().'/assets/kategorie/'.$kategorie[0]['name'].'.'.$ext);
+          //upload new image to path
           $uploads = move_uploaded_file($tmp_name, $newFilePath);
         }else{
           //"no image";
@@ -337,6 +343,7 @@ class Portfolio extends Controller {
       }else{
         $edit['image'] = $kategorie[0]['image'];
       }
+      //update database
       $this->_model->update("albums",$edit,"id=$id");
       Message::set('Kategorie aktualisiert!','success');
     }else{
