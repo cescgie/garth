@@ -29,14 +29,14 @@
 <body>
     <div align="center" class="margin-auto">
      <a href="<?= DIR ?>">
-       <img style="width:250px;height:70px;" onmouseover="this.src='<?= URL::ASSETS('green-logo.png','logo') ?>';" onmouseout="this.src='<?= URL::ASSETS('black-logo.png','logo') ?>';" class="logo-media" src="<?= URL::ASSETS('black-logo.png','logo') ?>">
+       <img style="width:250px;height:70px;" onmouseover="this.src='<?= URL::ASSETS('magenta-logo.png','logo') ?>';" onmouseout="this.src='<?= URL::ASSETS('black-logo.png','logo') ?>';" class="logo-media" src="<?= URL::ASSETS('black-logo.png','logo') ?>">
      </a>
    </div>
-    <nav class="black" role="navigation">
+    <nav role="navigation" style="background-color:#333333">
       <div class="container">
         <div class="nav-wrapper">
           <a href="<?= DIR ?>">
-            <img style="width:250px;height:70px;" class="logo-media-grey hide-on-med-and-down" src="<?= URL::ASSETS('grey-logo.png','logo') ?>"  onmouseover="this.src='<?= URL::ASSETS('green-logo.png','logo') ?>';" onmouseout="this.src='<?= URL::ASSETS('grey-logo.png','logo') ?>';" >
+            <img style="width:250px;height:70px;" class="logo-media-grey hide-on-med-and-down" src="<?= URL::ASSETS('grey-logo.png','logo') ?>"  onmouseover="this.src='<?= URL::ASSETS('magenta-logo.png','logo') ?>';" onmouseout="this.src='<?= URL::ASSETS('grey-logo.png','logo') ?>';" >
           </a>
          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
          <!-- menu for screen with width above 992px -->
