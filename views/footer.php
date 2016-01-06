@@ -4,13 +4,17 @@
         © 2016 Copyright Astrid Garth
 
         <!-- Modal Trigger -->
-        <a class="grey-text text-lighten-4 right modal-trigger-footer" style="color:black" href="#modal_login_footer">
-          <?php if(SESSION::get('admin')){
+        <div class="right">
+          <a  <?php if($data['menu_active'] === 'kontakt'):?>class="active"<?php endif;?> href="<?= DIR ?>impressum">IMPRESSUM</a>
+        </div>
+        <a class="modal-trigger-footer" style="color:white" href="#modal_login_footer">
+          <?php
+          if(SESSION::get('admin')){
             echo SESSION::get('admin'); ?>
             Logout
-          <?php }else{?>
-            Login
-          <?php }?>
+         <?php }else{?>
+           Login
+         <?php }?>
         </a>
 
         <!-- Modal Structure -->
@@ -42,6 +46,14 @@
     <!-- Compiled and minified JavaScript -->
     <script src="<?= URL::MATERIALIZE('materialize.min','js') ?>"></script>
     <script src="<?= URL::MATERIALIZE('init','js') ?>"></script>
+    <!-- Add mousewheel plugin (this is optional) -->
+    <script src="<?= URL::FANCYBOX('jquery.mousewheel.pack','js','lib')?>"></script>
+    <!-- Add fancyBox -->
+    <script type="text/javascript" src="<?= URL::FANCYBOX('jquery.fancybox.pack','js','source')?>"></script>
+    <!-- Optionally add helpers - button, thumbnail and/or media -->
+    <script type="text/javascript" src="<?= URL::FANCYBOX('jquery.fancybox-buttons','js','source/helpers')?>"></script>
+    <script type="text/javascript" src="<?= URL::FANCYBOX('jquery.fancybox-media','js','source/helpers')?>"></script>
+    <script type="text/javascript" src="<?= URL::FANCYBOX('jquery.fancybox-thumbs','js','source/helpers')?>"></script>
     <script type="text/javascript">
     $(document).ready(function(){
       // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered

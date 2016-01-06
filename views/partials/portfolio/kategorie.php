@@ -9,13 +9,14 @@
         <div class="col s12 m4 l3">
           <div class="card">
               <div class="card-image waves-effect waves-block waves-light kategorie-image">
-                <center><a href="<?= DIR ?>portfolio/album?album=<?= $value['name'];?>&kategorie=<?= $data['kategorie_name'];?>">
+                <!--<a href="<?= DIR ?>portfolio/album?album=<?= $value['name'];?>&kategorie=<?= $data['kategorie_name'];?>">-->
+                <a id="kategorie<?= $value['id'];?>" href="javascript:void(0)">
                   <?php if($value['image']==NULL):?>
                     <img style="border-color:white;width:90%;position:absolute;margin:auto" class="responsive-img hoverable z-depth-3" src="<?= DIR ?>assets/img/background1.jpg">
                   <?php else:?>
                     <img style="border-color:white;width:90%;position:absolute;margin:auto" class="responsive-img hoverable z-depth-3" src="<?= $value['image'];?>">
                   <?php endif;?>
-                </a></center>
+                </a>
               </div>
               <div class="card-content">
                 <p class="center activator grey-text text-darken-4 "><?= ucwords($value['name']); ?></p>
@@ -25,6 +26,48 @@
               </div>
           </div>
         </div>
+        <script type="text/javascript">
+        	$(document).ready(function() {
+            $("#kategorie<?= $value['id'];?>").click(function() {
+              var album_id = <?= $value['id'];?>;
+              var kategorie_id = <?= $value['kategorie_id'];?>;
+              $.ajax({
+                 type: 'POST',
+                 data: {
+                       album_id: album_id,
+                       kategorie_id:kategorie_id,
+                 },
+                 url: <?php DIR ?>'/portfolio/shows',
+                 dataType: "json",
+                 success: function (data){
+                   if(data!=''){
+                     var shows = JSON.stringify(data);
+                     $.fancybox(
+                       data
+                 		  , {
+                 			'padding'			: 0,
+                 			'transitionIn'		: 'none',
+                 			'transitionOut'		: 'none',
+                 			'type'              : 'image',
+                 			'changeFade'        : 0
+                 		});
+                  }else{
+                    $.fancybox({
+                      'padding'		: 0,
+                			'href'			: 'http://vignette4.wikia.nocookie.net/dofus/images/c/c8/Kein_Bild.png',
+                      'title'     : 'kein Bild vorhanden',
+                			'transitionIn'	: 'elastic',
+                			'transitionOut'	: 'elastic'
+	                  });
+                  }
+                 },
+                 error: function(data) {
+                   console.log("error");
+                 }
+               });
+          	});
+        	});
+        </script>
         <?php if(SESSION::get('admin')):?>
           <!-- Modal Structure -->
           <div id="modal<?=$value['id']?>" class="modal">
@@ -76,6 +119,7 @@
       <?php;endforeach; ?>
     <?php endif;?>
 </div>
+
 <script type="text/javascript">
 $(document).ready(function(){
   //trigger modal

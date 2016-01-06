@@ -33,6 +33,10 @@ class Portfolio_Model extends Model {
      return $this->_db->select('SELECT * FROM '.$table.' WHERE '.$col1.' = "'.$val1.'" AND '.$col2.' = "'.$val2.'" AND '.$col3.' = "'.$val3.'" ');
    }
 
+   public function selectOne2Clauses($table,$col1,$val1,$col2,$val2){
+     return $this->_db->select('SELECT title as title, path as href FROM '.$table.' WHERE '.$col1.' = "'.$val1.'" AND '.$col2.' = "'.$val2.'" ');
+   }
+
    public function check_exist($table,$col,$val){
      return $this->_db->select('SELECT count(*) as count FROM '.$table.' WHERE '.$col.' = "'.$val.'"');
    }

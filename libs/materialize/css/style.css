@@ -129,7 +129,13 @@ h4{
 }
 
 .tabs .tab a:hover{
-  color : #f9c9cb !important;
+  color : #FF00FF !important;
+}
+footer a{
+  color:#fff;
+}
+footer a:hover{
+  color : #FF00FF;
 }
 
 footer.page-footer.home {
@@ -158,6 +164,10 @@ nav div.middle ul{
   padding: 0 5px;
   text-align: center;
 }
+.middle{
+  width:85%;
+  margin: 0 auto;
+}
 nav ul a{
   font-size: 0.8em;
   padding: 0 5px;
@@ -168,6 +178,9 @@ nav ul a{
 }
 .row .col{
   padding: 0 -1rem !important;
+}
+.row .col.s2.medium{
+  width:20% !important;
 }
 .ul_menu a:active{
   color:#FF00FF;

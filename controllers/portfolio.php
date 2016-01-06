@@ -226,17 +226,18 @@ class Portfolio extends Controller {
           //$upload['title'] = preg_replace('/\\.[^.\\s]{3,4}$/', '', $_FILES["images"]["name"][$i]);
 
           if ($tmpFilePath != ""){
-            $date = date('d-m-Y');
+            $date = date('Y-m-d');
             $newfolder = getcwd()."/assets/collections/".$date;
             if(!is_dir($newfolder)){
               mkdir($newfolder, 0777, true);
               chmod($newfolder,0777);
             }
             $size = $_FILES["images"]["size"][$i];
-            $newFilePath = $newfolder ."/". $_FILES["images"]["name"][$i];
+            $newFilePath = 'assets/collections/'.$date.'/'.$_FILES["images"]["name"][$i];
             $foto_name = $_FILES["images"]["name"][$i];
             $upload['title'] = preg_replace('/\\.[^.\\s]{3,4}$/', '', $foto_name);
             $uploads = move_uploaded_file($tmpFilePath[$i], $newFilePath);
+            $newFilePath=DIR.$newFilePath;
             $save = $this->insert($_FILES["images"]["name"][$i],$newFilePath,$upload['album_id'],$upload['kategorie_id'],$upload['title'],$size, $next_reihenfolge);
             if($uploads){
               Message::set("Upload success",'success');
@@ -350,5 +351,14 @@ class Portfolio extends Controller {
       Message::set('Sie haben kein Recht!','info');
     }
     URL::REDIRECT("portfolio/kategorie/".$oberkategorie[0]['name']);
+  }
+
+  public function shows(){
+    $album_id = $_POST['album_id'];
+    $kategorie_id = $_POST['kategorie_id'];
+
+    $shows = $this->_model->selectOne2Clauses("images","album_id",$album_id,"kategorie_id",$kategorie_id);
+
+    echo json_encode($shows);
   }
 }

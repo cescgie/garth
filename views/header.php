@@ -25,6 +25,12 @@
    <meta name="theme-color" content="#EE6E73">
    <!-- Own style -->
    <link type="text/css" href="<?= URL::EXTRAS('style','css')?>" media="screen">
+   <!-- Add fancyBox -->
+   <link rel="stylesheet" href="<?= URL::FANCYBOX('jquery.fancybox','css','source')?>" type="text/css" media="screen" />
+   <!-- Optionally add helpers - button, thumbnail and/or media -->
+  <link rel="stylesheet" href="<?= URL::FANCYBOX('jquery.fancybox-buttons','css','source/helpers')?>" type="text/css" media="screen" />
+  <link rel="stylesheet" href="<?= URL::FANCYBOX('jquery.fancybox-thumbs','css','source/helpers')?>" type="text/css" media="screen" />
+
 </head>
 <body>
     <div align="center" class="margin-auto">
@@ -48,7 +54,6 @@
                  <li class="col s2 deskt"><a <?php if($data['menu_active'] === 'referenzen'):?>class="active"<?php endif;?> href="<?= DIR ?>referenzen">REFERENZEN</a></li>
                  <li class="col s2 deskt"><a <?php if($data['menu_active'] === 'links'):?>class="active"<?php endif;?> href="<?= DIR ?>links">LINKS</a></li>
                  <li class="col s2 deskt"><a <?php if($data['menu_active'] === 'kontakt'):?>class="active"<?php endif;?> href="<?= DIR ?>kontakt">KONTAKT</a></li>
-                 <li class="col s2 deskt"><a <?php if($data['menu_active'] === 'impressum'):?>class="active"<?php endif;?> href="<?= DIR ?>impressum">IMPRESSUM</a></li>
                </ul>
            </div>
          </div>
@@ -57,12 +62,11 @@
            <div class="row">
              <div class="col s12">
                <ul class="ul_menu">
-                 <li class="col s2"><a <?php if($data['menu_active'] === 'portfolio'):?>class="active"<?php endif;?> href="<?= DIR ?>portfolio">PORTFOLIO</a></li>
-                 <li class="col s2"><a <?php if($data['menu_active'] === 'vita'):?>class="active"<?php endif;?> href="<?= DIR ?>vita">VITA</a></li>
-                 <li class="col s2"><a <?php if($data['menu_active'] === 'referenzen'):?>class="active"<?php endif;?> href="<?= DIR ?>referenzen">REFERENZEN</a></li>
-                 <li class="col s2"><a <?php if($data['menu_active'] === 'links'):?>class="active"<?php endif;?> href="<?= DIR ?>links">LINKS</a></li>
-                 <li class="col s2"><a <?php if($data['menu_active'] === 'kontakt'):?>class="active"<?php endif;?> href="<?= DIR ?>kontakt">KONTAKT</a></li>
-                 <li class="col s2"><a <?php if($data['menu_active'] === 'impressum'):?>class="active"<?php endif;?> href="<?= DIR ?>impressum">IMPRESSUM</a></li>
+                 <li class="col s2 medium"><a <?php if($data['menu_active'] === 'portfolio'):?>class="active"<?php endif;?> href="<?= DIR ?>portfolio">PORTFOLIO</a></li>
+                 <li class="col s2 medium"><a <?php if($data['menu_active'] === 'vita'):?>class="active"<?php endif;?> href="<?= DIR ?>vita">VITA</a></li>
+                 <li class="col s2 medium"><a <?php if($data['menu_active'] === 'referenzen'):?>class="active"<?php endif;?> href="<?= DIR ?>referenzen">REFERENZEN</a></li>
+                 <li class="col s2 medium"><a <?php if($data['menu_active'] === 'links'):?>class="active"<?php endif;?> href="<?= DIR ?>links">LINKS</a></li>
+                 <li class="col s2 medium"><a <?php if($data['menu_active'] === 'kontakt'):?>class="active"<?php endif;?> href="<?= DIR ?>kontakt">KONTAKT</a></li>
                </ul>
              </div>
            </div>
@@ -78,7 +82,6 @@
         <li class="col s2"><a <?php if($data['menu_active'] === 'referenzen'):?>class="active"<?php endif;?> href="<?= DIR ?>referenzen">REFERENZEN</a></li>
         <li class="col s2"><a <?php if($data['menu_active'] === 'links'):?>class="active"<?php endif;?> href="<?= DIR ?>links">LINKS</a></li>
         <li class="col s2"><a <?php if($data['menu_active'] === 'kontakt'):?>class="active"<?php endif;?> href="<?= DIR ?>kontakt">KONTAKT</a></li>
-        <li class="col s2"><a <?php if($data['menu_active'] === 'impressum'):?>class="active"<?php endif;?> href="<?= DIR ?>impressum">IMPRESSUM</a></li>
       </ul>
     </div>
  </nav>

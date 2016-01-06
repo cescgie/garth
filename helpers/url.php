@@ -65,4 +65,15 @@ class URL {
       return DIR . $path;
    }
 
+   /*
+   * @param : filename,type
+   * @use : URL::FANCYBOX(filename,type)
+   */
+   public static function FANCYBOX($filename = false, $type = false, $folder = false, $path = 'libs/fancybox/') {
+      if ($filename) {
+         $path .= "$folder/$filename.$type";
+      }
+      return DIR . $path;
+   }
+
 }
