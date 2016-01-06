@@ -30,7 +30,6 @@
    <!-- Optionally add helpers - button, thumbnail and/or media -->
   <link rel="stylesheet" href="<?= URL::FANCYBOX('jquery.fancybox-buttons','css','source/helpers')?>" type="text/css" media="screen" />
   <link rel="stylesheet" href="<?= URL::FANCYBOX('jquery.fancybox-thumbs','css','source/helpers')?>" type="text/css" media="screen" />
-
 </head>
 <body>
     <div align="center" class="margin-auto">

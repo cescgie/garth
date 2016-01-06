@@ -54,6 +54,7 @@
     <script type="text/javascript" src="<?= URL::FANCYBOX('jquery.fancybox-buttons','js','source/helpers')?>"></script>
     <script type="text/javascript" src="<?= URL::FANCYBOX('jquery.fancybox-media','js','source/helpers')?>"></script>
     <script type="text/javascript" src="<?= URL::FANCYBOX('jquery.fancybox-thumbs','js','source/helpers')?>"></script>
+    <!-- Modal -->
     <script type="text/javascript">
     $(document).ready(function(){
       // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered

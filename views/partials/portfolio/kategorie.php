@@ -9,8 +9,8 @@
         <div class="col s12 m4 l3">
           <div class="card">
               <div class="card-image waves-effect waves-block waves-light kategorie-image">
-                <!--<a href="<?= DIR ?>portfolio/album?album=<?= $value['name'];?>&kategorie=<?= $data['kategorie_name'];?>">-->
-                <a id="kategorie<?= $value['id'];?>" href="javascript:void(0)">
+                <a  href="<?= DIR ?>portfolio/album?album=<?= $value['name'];?>&kategorie=<?= $data['kategorie_name'];?>">
+                <!--<a id="kategorie<?= $value['id'];?>" href="javascript:void(0)">-->
                   <?php if($value['image']==NULL):?>
                     <img style="border-color:white;width:90%;position:absolute;margin:auto" class="responsive-img hoverable z-depth-3" src="<?= DIR ?>assets/img/background1.jpg">
                   <?php else:?>

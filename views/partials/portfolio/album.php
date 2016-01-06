@@ -7,8 +7,8 @@
       <div class="col s12 m4 l3 foto_album">
         <div class="card">
           <div class="card-image waves-effect waves-block waves-light album-image">
-            <a href="#">
-              <img style="border-color:white;width:90%;position:absolute;margin:auto" class="responsive-img hoverable z-depth-3 activator" data-caption="A picture of some deer and tons of trees" src="<?= $value['path'];?>">
+            <a class="fancybox" rel="group" title="Custom title" href="<?= $value['path'];?>">
+              <img style="border-color:white;width:90%;position:absolute;margin:auto" class="responsive-img hoverable z-depth-3 activator" src="<?= $value['path'];?>">
             </a>
           </div>
           <div class="card-content">
@@ -61,7 +61,21 @@
       <?php endforeach; ?>
     <?php endif;?>
 </div>
-
+<script type="text/javascript">
+  $(document).ready(function() {
+		$(".fancybox").fancybox(
+      {
+        prevEffect		: 'none',
+    		nextEffect		: 'none',
+    		closeBtn		  : false,
+    		helpers		: {
+    			title	: false,
+    			buttons	: {}
+    		}
+      }
+    );
+	});
+</script>
   <script type="text/javascript">
    function confirmDelete(id,album_id){
      console.log("id : "+album_id);
