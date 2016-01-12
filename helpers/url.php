@@ -76,4 +76,15 @@ class URL {
       return DIR . $path;
    }
 
+   /*
+   * @param : filename,type
+   * @use : URL::COLORBOX(filename,type)
+   */
+   public static function COLORBOX($filename = false, $type = false, $path = 'libs/colorbox/') {
+      if ($filename) {
+         $path .= "$filename.$type";
+      }
+      return DIR . $path;
+   }
+
 }

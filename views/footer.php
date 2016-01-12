@@ -46,14 +46,6 @@
     <!-- Compiled and minified JavaScript -->
     <script src="<?= URL::MATERIALIZE('materialize.min','js') ?>"></script>
     <script src="<?= URL::MATERIALIZE('init','js') ?>"></script>
-    <!-- Add mousewheel plugin (this is optional) -->
-    <script src="<?= URL::FANCYBOX('jquery.mousewheel.pack','js','lib')?>"></script>
-    <!-- Add fancyBox -->
-    <script type="text/javascript" src="<?= URL::FANCYBOX('jquery.fancybox.pack','js','source')?>"></script>
-    <!-- Optionally add helpers - button, thumbnail and/or media -->
-    <script type="text/javascript" src="<?= URL::FANCYBOX('jquery.fancybox-buttons','js','source/helpers')?>"></script>
-    <script type="text/javascript" src="<?= URL::FANCYBOX('jquery.fancybox-media','js','source/helpers')?>"></script>
-    <script type="text/javascript" src="<?= URL::FANCYBOX('jquery.fancybox-thumbs','js','source/helpers')?>"></script>
     <!-- Modal -->
     <script type="text/javascript">
     $(document).ready(function(){

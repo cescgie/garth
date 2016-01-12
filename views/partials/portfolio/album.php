@@ -7,7 +7,7 @@
       <div class="col s12 m4 l3 foto_album">
         <div class="card">
           <div class="card-image waves-effect waves-block waves-light album-image">
-            <a class="fancybox" rel="group" title="Custom title" href="<?= $value['path'];?>">
+            <a class="group4"  title="<?= strtoupper($data['album']).' '.$value['title'];?>" href="<?= $value['path'];?>">
               <img style="border-color:white;width:90%;position:absolute;margin:auto" class="responsive-img hoverable z-depth-3 activator" src="<?= $value['path'];?>">
             </a>
           </div>
@@ -61,21 +61,12 @@
       <?php endforeach; ?>
     <?php endif;?>
 </div>
-<script type="text/javascript">
-  $(document).ready(function() {
-		$(".fancybox").fancybox(
-      {
-        prevEffect		: 'none',
-    		nextEffect		: 'none',
-    		closeBtn		  : false,
-    		helpers		: {
-    			title	: false,
-    			buttons	: {}
-    		}
-      }
-    );
-	});
-</script>
+  <!-- COLORBOX trigger -->
+  <script>
+   $(document).ready(function(){
+     $(".group4").colorbox({rel:'group4', slideshow:true});
+   });
+  </script>
   <script type="text/javascript">
    function confirmDelete(id,album_id){
      console.log("id : "+album_id);
@@ -117,4 +108,5 @@
        }
       });
    }
+
   </script>

@@ -25,23 +25,20 @@
    <meta name="theme-color" content="#EE6E73">
    <!-- Own style -->
    <link type="text/css" href="<?= URL::EXTRAS('style','css')?>" media="screen">
-   <!-- Add fancyBox -->
-   <link rel="stylesheet" href="<?= URL::FANCYBOX('jquery.fancybox','css','source')?>" type="text/css" media="screen" />
-   <!-- Optionally add helpers - button, thumbnail and/or media -->
-  <link rel="stylesheet" href="<?= URL::FANCYBOX('jquery.fancybox-buttons','css','source/helpers')?>" type="text/css" media="screen" />
-  <link rel="stylesheet" href="<?= URL::FANCYBOX('jquery.fancybox-thumbs','css','source/helpers')?>" type="text/css" media="screen" />
-</head>
+   <link rel="stylesheet" href="<?= URL::COLORBOX('example4/colorbox','css')?>" media="screen" title="no title" charset="utf-8">
+   <script type="text/javascript" src="<?= URL::COLORBOX('jquery.colorbox','js')?>"></script>
+   </head>
 <body>
     <div align="center" class="margin-auto">
      <a href="<?= DIR ?>">
-       <img style="width:250px;height:70px;" onmouseover="this.src='<?= URL::ASSETS('magenta-logo.png','logo') ?>';" onmouseout="this.src='<?= URL::ASSETS('black-logo.png','logo') ?>';" class="logo-media" src="<?= URL::ASSETS('black-logo.png','logo') ?>">
+       <img style="width:250px;height:70px;" onmouseover="this.src='<?= URL::ASSETS('grey2-logo.png','logo') ?>';" onmouseout="this.src='<?= URL::ASSETS('black-logo.png','logo') ?>';" class="logo-media" src="<?= URL::ASSETS('black-logo.png','logo') ?>">
      </a>
    </div>
     <nav role="navigation" style="background-color:#333333">
       <div class="container">
         <div class="nav-wrapper">
           <a href="<?= DIR ?>">
-            <img style="width:250px;height:70px;" class="logo-media-grey hide-on-med-and-down" src="<?= URL::ASSETS('grey-logo.png','logo') ?>"  onmouseover="this.src='<?= URL::ASSETS('magenta-logo.png','logo') ?>';" onmouseout="this.src='<?= URL::ASSETS('grey-logo.png','logo') ?>';" >
+            <img style="width:250px;height:70px;" class="logo-media-grey hide-on-med-and-down" src="<?= URL::ASSETS('grey-logo.png','logo') ?>"  onmouseover="this.src='<?= URL::ASSETS('grey2-logo.png','logo') ?>';" onmouseout="this.src='<?= URL::ASSETS('grey-logo.png','logo') ?>';" >
           </a>
          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
          <!-- menu for screen with width above 992px -->
