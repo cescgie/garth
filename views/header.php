@@ -25,7 +25,7 @@
    <meta name="theme-color" content="#EE6E73">
    <!-- Own style -->
    <link type="text/css" href="<?= URL::EXTRAS('style','css')?>" media="screen">
-   <link rel="stylesheet" href="<?= URL::COLORBOX('example4/colorbox','css')?>" media="screen" title="no title" charset="utf-8">
+   <link rel="stylesheet" href="<?= URL::COLORBOX('example5/colorbox','css')?>" media="screen" title="no title" charset="utf-8">
    <script type="text/javascript" src="<?= URL::COLORBOX('jquery.colorbox','js')?>"></script>
    </head>
 <body>
