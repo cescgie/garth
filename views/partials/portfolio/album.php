@@ -7,7 +7,7 @@
       <div class="col s12 m4 l3 foto_album">
         <div class="card">
           <div class="card-image waves-effect waves-block waves-light album-image">
-            <a class="group4"  title="<?= strtoupper($data['album']).' '.$value['title'];?>" href="<?= $value['path'];?>">
+            <a class="group4"  title="<?= $value['title']?>" href="<?= $value['path'];?>">
               <img style="border-color:white;width:90%;position:absolute;margin:auto" class="responsive-img hoverable z-depth-3 activator" src="<?= $value['path'];?>">
             </a>
           </div>
@@ -65,6 +65,22 @@
   <script>
    $(document).ready(function(){
      $(".group4").colorbox({rel:'group4', slideshow:true});
+     jQuery.colorbox.settings.maxWidth  = '90%';
+     jQuery.colorbox.settings.maxHeight = '90%';
+
+
+      // ColorBox resize function, seems do work now
+      var resizeTimer;
+      $(window).resize(function(){
+        if (resizeTimer) clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(function() {
+          if ($('#cboxOverlay').is(':visible')) {
+            //reload ist selbst hinugefügt in colorbox.js, public func welche einfach nur load() aufruft
+            $.colorbox.reload();
+          }
+        }, 300)
+      });
+
    });
   </script>
   <script type="text/javascript">
