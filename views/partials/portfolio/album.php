@@ -3,6 +3,7 @@
     <?php if(!sizeof($data['images'])) :?>
       <p>No Data</p>
     <?php else:?>
+      <a id="editreihenfolge" class="waves-effect waves-light btn btn-navigator" style="background-color:#ff5252;" href="#">Edit Reihenfolge</a><br>
       <?php foreach($data['images']as $key=>$value): ?>
       <div class="col s12 m4 l3 foto_album">
         <div class="card">
@@ -59,6 +60,24 @@
           </div>
         </div>
       <?php endforeach; ?>
+      <div class="container center-align">
+        <div class="col s12 m6 l6 phrase">
+          <ul class="list_bilder" id="sortable" style="display:none">
+            <?php
+              $i = 1;
+              foreach($data['images']as $key=>$value): ?>
+                <li class="ui-state-default">
+                  <span id="title"><?=$i?> <?= $value['title'];?></span>
+                  <input type="hidden" name="old_id" class="old_id" value="<?= $value['reihenfolge'];?>">
+                  <input type="hidden" name="in_id" class="in_id" value="<?= $value['id'];?>">
+                </li>
+            <?php
+            $i++;
+          endforeach; ?>
+          </ul>
+          <a id="speichernRH" class="waves-effect waves-light btn btn-navigator" style="background-color:#ff5252;" href="javascript:void(0)">Speichern</a><br>
+        </div>
+      </div>
     <?php endif;?>
 </div>
   <!-- COLORBOX trigger -->
@@ -126,3 +145,39 @@
    }
 
   </script>
+<script type="text/javascript">
+  $(function() {
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+  });
+  $(document).on('click','#editreihenfolge',function(){
+    console.log('editreihenfolge');
+    $(".foto_album").toggle();
+    $(".list_bilder").toggle();
+  });
+  $(document).on('click','#speichernRH',function(){
+    console.log('speichernRH');
+    var phrases = [];
+    var item = [];
+    $('.list_bilder li input.old_id').each(function (i, e) {
+        item.push($(e).val());
+    });
+    var item2 = [];
+    $('.list_bilder li input.in_id').each(function (i, e) {
+        item2.push($(e).val());
+    });
+    var strfy = [];
+    for (var i = 0; i < item.length; i++) {
+      $.ajax({
+        type: "POST",
+        url: "update_reihenfolge",
+        data: { id : item2[i], reihenfolge : i+1},
+        dataType: "html",
+        success: function(response){
+          console.log('success');
+        }
+      });
+    }
+  });
+
+</script>

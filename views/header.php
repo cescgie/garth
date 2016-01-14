@@ -27,6 +27,9 @@
    <link type="text/css" href="<?= URL::EXTRAS('style','css')?>" media="screen">
    <link rel="stylesheet" href="<?= URL::COLORBOX('example5/colorbox','css')?>" media="screen" title="no title" charset="utf-8">
    <script type="text/javascript" src="<?= URL::COLORBOX('jquery.colorbox','js')?>"></script>
+   <!-- sortable -->
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
    </head>
 <body>
     <div align="center" class="margin-auto">

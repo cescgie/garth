@@ -364,7 +364,9 @@ input#submit_kontakt, .submit_kontakt{
   height:100%;
   min-height:200px;
 }
-
+.list_bilder{
+  cursor: pointer;
+}
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
     position: absolute;

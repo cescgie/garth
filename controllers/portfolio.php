@@ -71,7 +71,7 @@ class Portfolio extends Controller {
       $album_id = $album[0]['id'];
 
       //get all images from one album
-      $data['images'] = $this->_model->selectOne("images","album_id",$album_id);
+      $data['images'] = $this->_model->selectOneRei("images","album_id",$album_id);
 
       $this->_view->render('header', $data);
       $this->_view->render('partials/partials_header', $data);
@@ -489,5 +489,13 @@ class Portfolio extends Controller {
     }
 
     return true;
+  }
+
+  public function update_reihenfolge(){
+    $id = $_POST['id'];
+    $reihen['reihenfolge'] = $_POST['reihenfolge'];
+    if(SESSION::get('admin')){
+      $this->_model->update("images",$reihen,"id=$id");
+    }
   }
 }

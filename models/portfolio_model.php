@@ -48,4 +48,8 @@ class Portfolio_Model extends Model {
    public function update($table,$data,$where){
      return $this->_db->update($table,$data,$where);
    }
+
+   public function selectOneRei($table,$col,$val){
+     return $this->_db->select('SELECT * FROM '.$table.' WHERE '.$col.' = "'.$val.'" ORDER BY reihenfolge ASC');
+   }
 }
