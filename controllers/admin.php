@@ -7,8 +7,7 @@ class Admin extends Controller {
    }
 
    public function index() {
-      $data['title'] = 'ADMIN';
-      $data['subtitle'] = 'ADMIN';
+     $this->_view->render('error/404');
    }
 
    public function login(){
@@ -57,5 +56,19 @@ class Admin extends Controller {
        Message::set("Please login first","info");
      }
      URL::REDIRECT("portfolio");
+   }
+
+   public function ag(){
+     $data['title'] = 'ADMIN';
+     $data['subtitle'] = 'ADMIN';
+     if(!SESSION::get('admin')){
+       $this->_view->render('header', $data);
+       $this->_view->render('partials/partials_header', $data);
+       $this->_view->render('admin/login', $data);
+       $this->_view->render('partials/partials_footer', $data);
+       $this->_view->render('footer', $data);
+     }else{
+       URL::REDIRECT("portfolio");
+     }
    }
 }

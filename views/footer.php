@@ -12,9 +12,7 @@
           if(SESSION::get('admin')){
             echo SESSION::get('admin'); ?>
             Logout
-         <?php }else{?>
-           Login
-         <?php }?>
+         <?php } ?>
         </a>
 
         <!-- Modal Structure -->
