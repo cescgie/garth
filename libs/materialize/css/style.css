@@ -129,13 +129,13 @@ h4{
 }
 
 .tabs .tab a:hover{
-  color : #FF00FF !important;
+  color : #c4c0c3 !important;
 }
 footer a{
   color:#fff;
 }
 footer a:hover{
-  color : #FF00FF;
+  color : #c4c0c3;
 }
 
 footer.page-footer.home {
@@ -183,32 +183,32 @@ nav ul a{
   width:20% !important;
 }
 .ul_menu a:active{
-  color:#FF00FF;
+  color:#c4c0c3;
   -webkit-transition: 0.2s 0.2s;
 }
 .ul_menu a:hover{
-  color:#FF00FF;
+  color:#c4c0c3;
 }
 .ul_menu a.active{
-  color:#FF00FF;
+  color:#c4c0c3;
 }
 .sub_ul_menu a.active{
-  color:#FF00FF;
+  color:#c4c0c3;
 }
 .sub_ul_menu a:active{
-  color:#FF00FF;
+  color:#c4c0c3;
   -webkit-transition: 0.2s 0.2s;
 }
 .sub_ul_menu a:hover{
-  color:#FF00FF;
+  color:#c4c0c3;
 }
 
 h4.h4-a a:active{
-  color:#FF00FF;
+  color:#c4c0c3;
   -webkit-transition: 0.2s 0.2s;
 }
 h4.h4-a a:hover{
-  color:#FF00FF;
+  color:#c4c0c3;
 }
 h4.h4-a a{
   color:white;
@@ -313,7 +313,7 @@ h4.h4-a a{
   height:450px;
 }
 blockquote{
-  border-left:5px solid #FF00FF;
+  border-left:5px solid #c4c0c3;
 }
 .strong{
   font-weight: bold;
@@ -322,13 +322,13 @@ a.a_links{
   color:#fff;
 }
 a.a_links:active, a.a_links:hover{
-  color: #FF00FF;
+  color: #c4c0c3;
 }
 .card-title{
   font-size: 20px !important;
 }
 .card-title:active, .card-title:hover{
-  color: #FF00FF !important;
+  color: #c4c0c3 !important;
 }
 .icon-color{
   color: #000;
