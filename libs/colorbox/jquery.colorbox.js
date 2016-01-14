@@ -46,7 +46,7 @@
 		reposition: true,
 		loop: true,
 		slideshow: false,
-		slideshowAuto: true,
+		slideshowAuto: false,
 		slideshowSpeed: 2500,
 		slideshowStart: "start slideshow",
 		slideshowStop: "stop slideshow",
@@ -58,7 +58,7 @@
 		retinaSuffix: '@2x.$1',
 
 		// internationalization
-		current: "image {current} of {total}",
+		current: " {current} / {total}",
 		previous: "previous",
 		next: "next",
 		close: "close",

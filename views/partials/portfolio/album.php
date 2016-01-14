@@ -7,8 +7,8 @@
       <div class="col s12 m4 l3 foto_album">
         <div class="card">
           <div class="card-image waves-effect waves-block waves-light album-image">
-            <a class="group4"  title="<?= $value['title']?>" href="<?= $value['path'];?>">
-              <img style="border-color:white;width:90%;position:absolute;margin:auto" class="responsive-img hoverable z-depth-3 activator" src="<?= $value['path'];?>">
+            <a class="group4"  title="<?= $value['title']?>" href="<?= DIR.$value['path'];?>">
+              <img style="border-color:white;width:90%;position:absolute;margin:auto" class="responsive-img hoverable z-depth-3 activator" src="<?= DIR.$value['cover'];?>">
             </a>
           </div>
           <div class="card-content">
