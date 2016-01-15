@@ -41,6 +41,7 @@ class Portfolio extends Controller {
       //get kategorie id
       $data['kategorie_id'] = $this->_model->selectOne("kategories","name",$name);
       $kategorie_id = $data['kategorie_id'][0]['id'];
+      $data['cat_id'] = $kategorie_id;
 
       //get all albums from one kategorie
       $data['albums'] = $this->_model->selectOne("albums","kategorie_id",$kategorie_id);
@@ -319,6 +320,17 @@ class Portfolio extends Controller {
       }
       $album = $this->_model->delete("albums","id=$album_id");
     }
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+  }
+
+  function createKategorie($cat_id){
+    $create['name'] = filter_var($_POST['new_album_name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+    $create['kategorie_id'] = $cat_id;
+    $ober_kategorie_name = $_POST['ober_kategorie_name'];
+    if(SESSION::get('admin')){
+      $save = $this->_model->create("albums",$create);
+    }
+    Message::set('Neue Kategorie erstellt!','success');
     header('Location: ' . $_SERVER['HTTP_REFERER']);
   }
 

@@ -1,5 +1,23 @@
 <div class="row">
     <?php echo Message::show(); ?>
+    <?php if(SESSION::get('admin')) :?>
+    <a class="modal-trigger-newKategorie waves-effect waves-light btn btn-navigator" style="background-color:#40c4ff" href="#modalNewKategorie">Neue Kategorie erstellen</a><br><br>
+    <div id="modalNewKategorie" class="modal">
+      <div class="modal-content">
+        <form action="<?php DIR ?>/portfolio/createKategorie/<?=$data['cat_id']?>" method="POST">
+          <div class="row input-field">
+            <div class="col s12">
+              <div id="div_album_name">
+                <input placeholder="Neue Kategorie" id="new_album_name" name="new_album_name" type="text">
+                <input type="hidden" name="ober_kategorie_name" value="<?=$data['kategorie_name'] ?>">
+              </div>
+            </div>
+            <input type="submit" class="right btn submit" value="Erstellen">
+          </div>
+        </form>
+      </div>
+    </div>
+    <?php endif; ?>
     <?php if(!sizeof($data['albums'])) :?>
       <p>No Data</p>
     <?php else:?>
@@ -94,9 +112,8 @@
 $(document).ready(function(){
   //trigger modal
   $('.modal-trigger-editKategorie').leanModal();
-});
-$(document).ready(function(){
   $('.modal-trigger-deleteKategorie').leanModal();
+  $('.modal-trigger-newKategorie').leanModal();
 });
 $('a#editForm').click(function(){
   console.log($(this).attr('album_id'));
