@@ -1,27 +1,30 @@
   <div class="row">
-    <div class="col 12">
-      <div class="">
-        <p class="p_kontakt">Astrid Garth</p>
-        <p class="p_kontakt">Pfarrstrasse 8</p>
-        <p class="p_kontakt">55262 Heidesheim</p>
-        <p class="p_kontakt">Telefon: 06132 - 56 322</p>
-        <p class="p_kontakt">Mobil: 0176 – 513 59 763</p>
-      </div>
+    <div class="col s12 l12 m12">
+      <div class="body_text">
 
-      <div class="div_kontakt">
-        <p class="strong">
-          Haben die Bilder Ihr Interesse geweckt?
-        </p>
-        <p>
-          Man kann mich natürlich auch buchen...
-        </p>
-        <p>
-          Mit über 20 Jahren Berufserfahrung bin ich genau die Richtige für eine stimmungsvolle Reportage Ihres Firmenevents
-        </p>
-        <p>
-          oder aussagekräftige Werbeaufnahmen Ihres Unternehmens. Gerne begleite ich auch Ihre Hochzeit oder erstelle einfühlsame Portraitserien.
-          Für Preis- und Terminanfragen schicken Sie mir einfach eine E-Mail oder rufen Sie an.
-        </p>
+        <div class="div_head">
+          <p class="p_kontakt">Astrid Garth</p>
+          <p class="p_kontakt">Pfarrstrasse 8</p>
+          <p class="p_kontakt">55262 Heidesheim</p>
+          <p class="p_kontakt">Telefon: 06132 - 56 322</p>
+          <p class="p_kontakt">Mobil: 0176 – 513 59 763</p>
+        </div>
+
+        <div class="div_kontakt">
+          <p class="strong">
+            Haben die Bilder Ihr Interesse geweckt?
+          </p>
+          <p>
+            Man kann mich natürlich auch buchen...
+          </p>
+          <p>
+            Mit über 20 Jahren Berufserfahrung bin ich genau die Richtige für eine stimmungsvolle Reportage Ihres Firmenevents
+          </p>
+          <p>
+            oder aussagekräftige Werbeaufnahmen Ihres Unternehmens. Gerne begleite ich auch Ihre Hochzeit oder erstelle einfühlsame Portraitserien.
+            Für Preis- und Terminanfragen schicken Sie mir einfach eine E-Mail oder rufen Sie an.
+          </p>
+        </div>
       </div>
 
       <div class="widget-upload" style="margin-top:50px;">

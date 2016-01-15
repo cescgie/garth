@@ -139,15 +139,15 @@ footer a:hover{
 }
 
 footer.page-footer.home {
-  background-color: rgba(1, 1, 1, 0.38);
+  background-color: #333333;
 }
 
 footer.page-footer {
-  background-color: rgba(1, 1, 1, 0.88);
+  background-color: #333333;
 }
 
 footer.page-footer .footer-copyright{
-  background-color: rgba(13, 12, 13, 0.77);
+  background-color: #333333;
 }
 
 .outside {
@@ -367,6 +367,9 @@ input#submit_kontakt, .submit_kontakt{
 .list_bilder{
   cursor: pointer;
 }
+.body_text{
+  margin: 3%;
+}
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
     position: absolute;
@@ -472,6 +475,10 @@ input#submit_kontakt, .submit_kontakt{
   .tabs .tab a{
     width:100%;
   }
+  .widget-upload{
+    margin-left: 20%;
+    margin-right: 20%;
+  }
 }
 @media only screen and (min-width : 993px) and (max-width : 1057px){
   .shown{
@@ -498,6 +505,10 @@ input#submit_kontakt, .submit_kontakt{
    height:100%;
    min-height:240px;
   }
+  .widget-upload{
+    margin-left: 20%;
+    margin-right: 20%;
+  }
 }
 @media only screen and (min-width : 1057px) and (max-width : 1240px){
 	.album-image{
@@ -510,6 +521,10 @@ input#submit_kontakt, .submit_kontakt{
 	 height:100%;
 	 min-height:250px;
 	}
+  .widget-upload{
+    margin-left: 20%;
+    margin-right: 20%;
+  }
 }
 @media only screen and (min-width : 1240px) {
 	.album-image{
@@ -525,4 +540,8 @@ input#submit_kontakt, .submit_kontakt{
 	.h4-div{
 	 margin-left:6px;
 	}
+  .widget-upload{
+    margin-left: 20%;
+    margin-right: 20%;
+  }
 }

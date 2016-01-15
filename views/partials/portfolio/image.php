@@ -10,7 +10,7 @@
     </tr>
   </table>
   <?php foreach($data['show_foto']as $key=>$value): ?>
-    <center><img id="image_show_id" class="materialboxed responsive-img z-depth-3" data-caption="<?php echo $value['title'];?>" src="<?= DIR."assets/collections/".date('d-m-Y', strtotime($value['created_at']))."/".$value['name']; ?>"></center><br>
+    <center><img id="image_show_id" class="materialboxed responsive-img z-depth-3" data-caption="<?php echo $value['title'];?>" src="<?= DIR.$value['path']; ?>"></center><br>
     <div class="center">
       <h4><?= $value['title'];?></h4>
       <p><?= $value['description'];?></p>
