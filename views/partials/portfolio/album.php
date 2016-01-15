@@ -1,10 +1,32 @@
 <div class="row">
     <?php echo Message::show(); ?>
+    <?php if(SESSION::get('admin')) :?>
+    <a class="modal-trigger-newBilder waves-effect waves-light btn btn-navigator" style="background-color:#40c4ff" href="#modalNewBilder">Neue Bilder hochladen</a><br><br>
+    <div id="modalNewBilder" class="modal">
+      <div class="modal-content">
+        <form action="<?= DIR ?>portfolio/uploadBilder" method="POST" enctype="multipart/form-data">
+          <div class="row input-field">
+            <div class="file-field col s12">
+               <input type="hidden" name="album_id" value="<?=$data['id_album']?>">
+                <div class="btn">
+                  <span>Datei</span>
+                  <input type="file" name="images[]" multiple="">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text" placeholder="Ein oder mehr Bilder hochladen">
+                </div>
+              </div>
+            <input type="submit" class="right btn submit" value="Hochladen">
+          </div>
+        </form>
+      </div>
+    </div>
+    <?php endif; ?>
     <?php if(!sizeof($data['images'])) :?>
       <p>No Data</p>
     <?php else:?>
       <?php if(SESSION::get('admin')) :?>
-      <a id="editreihenfolge" class="waves-effect waves-light btn btn-navigator" style="background-color:#40c4ff;" href="#">Reihenfolge aktualisieren</a><br>
+      <a id="editreihenfolge" class="waves-effect waves-light btn btn-navigator" style="background-color:#4db6ac;" href="#">Reihenfolge aktualisieren</a><br><br>
       <?php endif;?>
       <?php foreach($data['images']as $key=>$value): ?>
       <div class="col s12 m4 l3 foto_album">
@@ -117,6 +139,10 @@
   </script>
   <?php if(SESSION::get('admin')) :?>
   <script type="text/javascript">
+    $(document).ready(function(){
+      //trigger modal
+      $('.modal-trigger-newBilder').leanModal();
+    });
    function confirmDelete(id,album_id){
      console.log("id : "+album_id);
      $.ajax({

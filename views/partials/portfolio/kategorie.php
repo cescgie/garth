@@ -4,7 +4,7 @@
     <a class="modal-trigger-newKategorie waves-effect waves-light btn btn-navigator" style="background-color:#40c4ff" href="#modalNewKategorie">Neue Kategorie erstellen</a><br><br>
     <div id="modalNewKategorie" class="modal">
       <div class="modal-content">
-        <form action="<?php DIR ?>/portfolio/createKategorie/<?=$data['cat_id']?>" method="POST">
+        <form action="<?= DIR ?>portfolio/createKategorie/<?=$data['cat_id']?>" method="POST">
           <div class="row input-field">
             <div class="col s12">
               <div id="div_album_name">

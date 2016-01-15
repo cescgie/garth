@@ -21,7 +21,7 @@ class Portfolio extends Controller {
       $this->_view->render('partials/partials_header', $data);
       //$this->_view->render('partials/portfolio/submenu', $data);
       if(SESSION::get('admin')){
-        $this->_view->render('partials/portfolio/upload_form', $data);
+        //$this->_view->render('partials/portfolio/upload_form', $data);
       }
       $this->_view->render('partials/portfolio/index', $data);
       $this->_view->render('partials/partials_footer', $data);
@@ -70,6 +70,7 @@ class Portfolio extends Controller {
       //get album id
       $album = $this->_model->selectOne("albums","name",$name);
       $album_id = $album[0]['id'];
+      $data['id_album'] = $album_id;
 
       //get all images from one album
       $data['images'] = $this->_model->selectOneRei("images","album_id",$album_id);
@@ -525,5 +526,67 @@ class Portfolio extends Controller {
     if(SESSION::get('admin')){
       $this->_model->update("images",$reihen,"id=$id");
     }
+  }
+
+  public function uploadBilder(){
+    if(SESSION::get('admin')){
+      $album_id = $_POST['album_id'];
+      $data['albums'] = $this->_model->selectOne("albums","id",$album_id);
+
+      $upload['kategorie_id'] = $data['albums'][0]['kategorie_id'];
+      $upload['album_id'] = $album_id;
+
+      if (!empty($_FILES)) {
+        $total_upload = count($_FILES["images"]["name"]);
+        $count_current_in_album = $this->_model->count("images",'album_id',$upload['album_id']);
+        $total_current_in_album = $count_current_in_album[0]['total'];
+
+        for($i=0; $i<count($_FILES["images"]["name"]); $i++) {
+          $next_reihenfolge = $total_current_in_album + $i + 1;
+          $tmpFilePath = $_FILES["images"]['tmp_name'];
+          //$upload['title'] = preg_replace('/\\.[^.\\s]{3,4}$/', '', $_FILES["images"]["name"][$i]);
+
+          if ($tmpFilePath != ""){
+            $date = date('Y-m-d');
+            $newfolder = getcwd()."/assets/collections/".$date;
+            if(!is_dir($newfolder)){
+              mkdir($newfolder, 0777, true);
+              chmod($newfolder,0777);
+            }
+            $newfolderCover = getcwd()."/assets/collections/".$date."/cover";
+            if(!is_dir($newfolderCover)){
+              mkdir($newfolderCover, 0777, true);
+              chmod($newfolderCover,0777);
+            }
+            $size = $_FILES["images"]["size"][$i];
+            $newFilePath = 'assets/collections/'.$date.'/'.$_FILES["images"]["name"][$i];
+            $newFilePathCover = "assets/collections/".$date."/cover/".$_FILES["images"]["name"][$i];
+            $foto_name = $_FILES["images"]["name"][$i];
+            $upload['title'] = preg_replace('/\\.[^.\\s]{3,4}$/', '', $foto_name);
+            $uploads = move_uploaded_file($tmpFilePath[$i], $newFilePath);
+            //insert to database
+            $save = $this->insert($_FILES["images"]["name"][$i],$newFilePath,$newFilePathCover,$upload['album_id'],$upload['kategorie_id'],$upload['title'],$size, $next_reihenfolge);
+            //resize file
+            $file = $newFilePath;
+            //indicate the path and name for the new resized file
+            $resizedFile = $newFilePathCover;
+            //call the function (when passing path to pic)
+            $img = $this->smart_resize_image($file , null, '230' , '150' , false , $resizedFile , false , false ,100 );
+            if($img){
+              Message::set("Upload success",'success');
+            }else{
+              Message::set("Upload fail",'error');
+            }
+          }else{
+            Message::set('Please choose at least one image to upload','error');
+          }
+        }
+      }else{
+        Message::set("Upload fail",'error');
+      }
+    }else{
+      Message::set("Do not have authorization",'error');
+    }
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
   }
 }
