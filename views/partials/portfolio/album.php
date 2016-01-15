@@ -3,7 +3,9 @@
     <?php if(!sizeof($data['images'])) :?>
       <p>No Data</p>
     <?php else:?>
-      <a id="editreihenfolge" class="waves-effect waves-light btn btn-navigator" style="background-color:#ff5252;" href="#">Edit Reihenfolge</a><br>
+      <?php if(SESSION::get('admin')) :?>
+      <a id="editreihenfolge" class="waves-effect waves-light btn btn-navigator" style="background-color:#40c4ff;" href="#">Reihenfolge aktualisieren</a><br>
+      <?php endif;?>
       <?php foreach($data['images']as $key=>$value): ?>
       <div class="col s12 m4 l3 foto_album">
         <div class="card">
@@ -60,24 +62,36 @@
           </div>
         </div>
       <?php endforeach; ?>
-      <div class="container center-align">
-        <div class="col s12 m6 l6 phrase">
-          <ul class="list_bilder" id="sortable" style="display:none">
-            <?php
-              $i = 1;
-              foreach($data['images']as $key=>$value): ?>
-                <li class="ui-state-default">
-                  <span id="title"><?=$i?> <?= $value['title'];?></span>
-                  <input type="hidden" name="old_id" class="old_id" value="<?= $value['reihenfolge'];?>">
-                  <input type="hidden" name="in_id" class="in_id" value="<?= $value['id'];?>">
-                </li>
-            <?php
-            $i++;
-          endforeach; ?>
-          </ul>
-          <a id="speichernRH" class="waves-effect waves-light btn btn-navigator" style="background-color:#ff5252;" href="javascript:void(0)">Speichern</a><br>
+      <?php if(SESSION::get('admin')) :?>
+        <div class="container center-align div_sortable" style="display:none">
+          <div class="col s12 m12 l12">
+            <a class="modal-trigger-reihenfolge waves-effect waves-light btn btn-navigator right" href="#modalUpdateRF" style="background-color:#4db6ac;">Speichern</a><br><br>
+            <!-- Modal Delete Structure -->
+            <div id="modalUpdateRF" class="modal">
+              <div class="modal-content">
+                <p>Die aktualle Reihenfolge speichern?</p>
+              </div>
+              <div class="modal-footer">
+                <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat right">Nein</a>
+                <a id="speichernRH" href="#"class="modal-action modal-close waves-effect waves-green btn-flat">Ja</a>
+              </div>
+            </div>
+            <ul class="list_bilder" id="sortable">
+              <?php
+                $i = 1;
+                foreach($data['images']as $key=>$value): ?>
+                  <li class="ui-state-default">
+                    <span class="ui-icon ui-icon-arrowthick-2-n-s"></span><span id="title"><?=$i?> <?= $value['title'];?></span>
+                    <input type="hidden" name="old_id" class="old_id" value="<?= $value['reihenfolge'];?>">
+                    <input type="hidden" name="in_id" class="in_id" value="<?= $value['id'];?>">
+                  </li>
+              <?php
+              $i++;
+            endforeach; ?>
+            </ul>
+          </div>
         </div>
-      </div>
+      <?php endif;?>
     <?php endif;?>
 </div>
   <!-- COLORBOX trigger -->
@@ -86,7 +100,6 @@
      $(".group4").colorbox({rel:'group4', slideshow:true});
      jQuery.colorbox.settings.maxWidth  = '90%';
      jQuery.colorbox.settings.maxHeight = '90%';
-
 
       // ColorBox resize function, seems do work now
       var resizeTimer;
@@ -102,6 +115,7 @@
 
    });
   </script>
+  <?php if(SESSION::get('admin')) :?>
   <script type="text/javascript">
    function confirmDelete(id,album_id){
      console.log("id : "+album_id);
@@ -153,11 +167,10 @@
   $(document).on('click','#editreihenfolge',function(){
     console.log('editreihenfolge');
     $(".foto_album").toggle();
-    $(".list_bilder").toggle();
+    $(".div_sortable").toggle();
   });
   $(document).on('click','#speichernRH',function(){
     console.log('speichernRH');
-    var phrases = [];
     var item = [];
     $('.list_bilder li input.old_id').each(function (i, e) {
         item.push($(e).val());
@@ -178,6 +191,7 @@
         }
       });
     }
+    Materialize.toast('Reihenfolge aktualisiert', 2500, '',function(){location.reload()});
   });
-
 </script>
+<?php endif;?>
