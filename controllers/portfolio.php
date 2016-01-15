@@ -293,6 +293,7 @@ class Portfolio extends Controller {
     if(SESSION::get('admin')){
       $delete = $this->_model->delete("images","id=$id");
       unlink($image[0]['path']);
+      unlink($image[0]['cover']);
 
       //get all images from one album
       $images = $this->_model->selectOne("images","album_id",$album_id);
