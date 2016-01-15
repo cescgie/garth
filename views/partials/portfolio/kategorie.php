@@ -22,6 +22,7 @@
                 <p class="center activator grey-text text-darken-4 "><?= ucwords($value['name']); ?></p>
                 <?php if(SESSION::get('admin')) :?>
                   <a class="modal-trigger-editKategorie waves-effect waves-light btn btn-navigator" style="background-color:#1e88e5" href="#modal<?=$value['id']?>">Edit</a>
+                  <a class="modal-trigger-deleteKategorie waves-effect waves-light btn btn-navigator" style="background-color:#ff5252" href="#modalDeleteKategorie<?=$value['id']?>">Delete</a>
                 <?php endif; ?>
               </div>
           </div>
@@ -115,6 +116,17 @@
               </form>
             </div>
           </div>
+
+          <!-- Modal Delete Structure -->
+          <div id="modalDeleteKategorie<?= $value['id'];?>" class="modal">
+            <div class="modal-content">
+              <p>Delete <?= $value['name'];?>?</p>
+            </div>
+            <div class="modal-footer">
+              <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat right">Nein</a>
+              <a href="<?= DIR.'portfolio/deleteKategorie/'.$value['id']?>" class="modal-action modal-close waves-effect waves-green btn-flat">Ja</a>
+            </div>
+          </div>
         <?php endif;?>
       <?php;endforeach; ?>
     <?php endif;?>
@@ -124,6 +136,9 @@
 $(document).ready(function(){
   //trigger modal
   $('.modal-trigger-editKategorie').leanModal();
+});
+$(document).ready(function(){
+  $('.modal-trigger-deleteKategorie').leanModal();
 });
 $('a#editForm').click(function(){
   console.log($(this).attr('album_id'));

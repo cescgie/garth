@@ -306,6 +306,22 @@ class Portfolio extends Controller {
     echo json_encode($images);
   }
 
+  function deleteKategorie($id){
+    $album_id = $id;
+    $image = $this->_model->selectOne("images","album_id",$album_id);
+    if(SESSION::get('admin')){
+      foreach ($image as $key => $value) {
+        $unlink = unlink($value['path']);
+        unlink($value['cover']);
+        if($unlink){
+          $delete = $this->_model->delete("images","id='".$value['id']."'");
+        }
+      }
+      $album = $this->_model->delete("albums","id=$album_id");
+    }
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+  }
+
   public function edit(){
     $edit['id'] = $_POST['id'];
     $edit['title'] = $_POST['title'];
