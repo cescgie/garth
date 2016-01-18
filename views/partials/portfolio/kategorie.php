@@ -26,7 +26,7 @@
        foreach ($data['albums'] as $key => $value) :?>
         <div class="col s12 m4 l3">
           <div class="card">
-              <div class="card-image waves-effect waves-block waves-light index-image">
+              <div class="card-image waves-effect waves-block waves-light kategorie-image">
                 <a  href="<?= DIR ?>portfolio/album?album=<?= $value['name'];?>&kategorie=<?= $data['kategorie_name'];?>">
                 <!--<a id="kategorie<?= $value['id'];?>" href="javascript:void(0)">-->
                   <?php if($value['image']==NULL):?>

@@ -252,7 +252,8 @@ class Portfolio extends Controller {
             //indicate the path and name for the new resized file
             $resizedFile = $newFilePathCover;
             //call the function (when passing path to pic)
-            $img = $this->smart_resize_image($file , null, '230' , '150' , false , $resizedFile , false , false ,100 );
+            //$img = $this->smart_resize_image($file , null, '230' , '150' , false , $resizedFile , false , false ,100 );
+            $img = $this->compress($file , $resizedFile , 50 );
             if($img){
               Message::set("Upload success",'success');
             }else{
@@ -385,7 +386,8 @@ class Portfolio extends Controller {
           //indicate the path and name for the new resized file
           $resizedFile = $newFilePath;
           //call the function (when passing path to pic)
-          $img = $this->smart_resize_image($file , null, '230' , '150' , false , $resizedFile , false , false ,100 );
+          //$img = $this->smart_resize_image($file , null, 250 , 150 , false , $resizedFile , false , false ,10 );
+          $img = $this->compress($file , $resizedFile , 50 );
         }else{
           //"no image";
           $edit['image'] = $kategorie[0]['image'];
@@ -409,6 +411,24 @@ class Portfolio extends Controller {
     $shows = $this->_model->selectOne2Clauses("images","album_id",$album_id,"kategorie_id",$kategorie_id);
 
     echo json_encode($shows);
+  }
+
+  public function compress($source, $destination, $quality) {
+
+    $info = getimagesize($source);
+
+    if ($info['mime'] == 'image/jpeg')
+        $image = imagecreatefromjpeg($source);
+
+    elseif ($info['mime'] == 'image/gif')
+        $image = imagecreatefromgif($source);
+
+    elseif ($info['mime'] == 'image/png')
+        $image = imagecreatefrompng($source);
+
+    imagejpeg($image, $destination, $quality);
+
+    return $destination;
   }
 
   public function smart_resize_image($file,
@@ -572,7 +592,8 @@ class Portfolio extends Controller {
             //indicate the path and name for the new resized file
             $resizedFile = $newFilePathCover;
             //call the function (when passing path to pic)
-            $img = $this->smart_resize_image($file , null, '230' , '150' , false , $resizedFile , false , false ,100 );
+            //$img = $this->smart_resize_image($file , null, '230' , '150' , false , $resizedFile , false , false ,100 );
+            $img = $this->compress($file , $resizedFile , 50 );
             if($img){
               Message::set("Upload success",'success');
             }else{
