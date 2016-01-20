@@ -18,4 +18,4 @@ define('DB_PASS','');
 define('SESSION_PREFIX','astrid-garth_');
 
 //optionall create a constant for the name of the site
-define('SITETITLE','Astrid Grath');
+define('SITETITLE','Astrid Garth');

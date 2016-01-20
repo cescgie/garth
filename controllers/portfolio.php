@@ -375,10 +375,14 @@ class Portfolio extends Controller {
           $ext = pathinfo($nama, PATHINFO_EXTENSION);
           //temporary path
           $tmp_name = $_FILES['kategorie_cover'.$id]['tmp_name'];
-          $newFilePath = 'assets/kategorie/'.$edit['name'].'.'.$ext;
-          $edit['image'] = DIR.$newFilePath;
+          //rename file with date
+          $file_name = $oberkategorie[0]['name'].'_'.$kategorie[0]['name'].'.'.$ext;
+          //path for new file
+          $newFilePath = 'assets/kategorie/'.$file_name;
+          $edit['image'] = $newFilePath;
+          $edit['updated_at'] = date("Y-m-d H:i:s");
           //remove old image from path
-          unlink(getcwd().'/assets/kategorie/'.$kategorie[0]['name'].'.'.$ext);
+          unlink($kategorie[0]['image']);
           //upload new image to path
           $uploads = move_uploaded_file($tmp_name, $newFilePath);
           //resize file
