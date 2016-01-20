@@ -32,7 +32,7 @@
                   <?php if($value['image']==NULL):?>
                     <img style="border-color:white;width:90%;position:absolute;margin:auto" class="responsive-img hoverable z-depth-3" src="<?= DIR ?>assets/img/background1.jpg">
                   <?php else:?>
-                    <img style="border-color:white;width:90%;position:absolute;margin:auto" class="responsive-img hoverable z-depth-3" src="<?= DIR.'/'.$value['image'];?>">
+                    <img style="border-color:white;width:90%;position:absolute;margin:auto" class="responsive-img hoverable z-depth-3" src="<?= DIR.$value['image'];?>">
                   <?php endif;?>
                 </a>
               </div>

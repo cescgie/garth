@@ -584,8 +584,9 @@ class Portfolio extends Controller {
               chmod($newfolderCover,0777);
             }
             $size = $_FILES["images"]["size"][$i];
-            $newFilePath = 'assets/collections/'.$date.'/'.$_FILES["images"]["name"][$i];
-            $newFilePathCover = "assets/collections/".$date."/cover/".$_FILES["images"]["name"][$i];
+            $newFile = $data['albums'][0]['name'].'_'.$_FILES["images"]["name"][$i];
+            $newFilePath = 'assets/collections/'.$date.'/'.$newFile;
+            $newFilePathCover = "assets/collections/".$date."/cover/".$newFile;
             $foto_name = $_FILES["images"]["name"][$i];
             $upload['title'] = preg_replace('/\\.[^.\\s]{3,4}$/', '', $foto_name);
             $uploads = move_uploaded_file($tmpFilePath[$i], $newFilePath);
