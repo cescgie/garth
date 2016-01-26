@@ -246,7 +246,7 @@ class Portfolio extends Controller {
             $upload['title'] = preg_replace('/\\.[^.\\s]{3,4}$/', '', $foto_name);
             $uploads = move_uploaded_file($tmpFilePath[$i], $newFilePath);
             //insert to database
-            $save = $this->insert($_FILES["images"]["name"][$i],$newFilePath,$newFilePathCover,$upload['album_id'],$upload['kategorie_id'],$upload['title'],$size, $next_reihenfolge);
+            //$save = $this->insert($_FILES["images"]["name"][$i],$newFilePath,$newFilePathCover,$upload['album_id'],$upload['kategorie_id'],$upload['title'],$size,$bild_form, $next_reihenfolge);
             //resize file
             $file = $newFilePath;
             //indicate the path and name for the new resized file
@@ -271,7 +271,7 @@ class Portfolio extends Controller {
     }
   }
 
-  public function insert($filename,$newFilePath,$newFilePathCover,$album_id,$kategorie_id,$title,$size,$reihenfolge){
+  public function insert($filename,$newFilePath,$newFilePathCover,$album_id,$kategorie_id,$title,$size,$bild_form,$reihenfolge){
     $image['reihenfolge'] = $reihenfolge;
     $image['name'] = $filename;
     $image['title'] = $title;
@@ -280,6 +280,7 @@ class Portfolio extends Controller {
     $image['album_id'] = $album_id;
     $image['kategorie_id'] = $kategorie_id;
     $image['size'] = $size;
+    $image['bild_form'] = $bild_form;
     $image['created_at'] = date("Y-m-d H:i:s");
     //save to database
     $save = $this->_model->create("images",$image);
@@ -602,12 +603,6 @@ class Portfolio extends Controller {
             $foto_name = $_FILES["images"]["name"][$i];
             $upload['title'] = preg_replace('/\\.[^.\\s]{3,4}$/', '', $foto_name);
             $uploads = move_uploaded_file($tmpFilePath[$i], $newFilePath);
-            //insert to database
-            $save = $this->insert($_FILES["images"]["name"][$i],$newFilePath,$newFilePathCover,$upload['album_id'],$upload['kategorie_id'],$upload['title'],$size, $next_reihenfolge);
-            //resize file
-            $file = $newFilePath;
-            //indicate the path and name for the new resized file
-            $resizedFile = $newFilePathCover;
 
             list($width, $height) = getimagesize($newFilePath);
             $ratio = $width/$height;
@@ -615,6 +610,18 @@ class Portfolio extends Controller {
             $tenpercentheight = 0.10 * $height;
             $target_width = $tenpercentheight * $ratio;
             $target_height = $tenpercentwidth / $ratio;
+            if($width<$height){
+              $bild_form = 'portrait';
+            }else{
+              $bild_form = 'landscape';
+            }
+            //insert to database
+            $save = $this->insert($_FILES["images"]["name"][$i],$newFilePath,$newFilePathCover,$upload['album_id'],$upload['kategorie_id'],$upload['title'],$size,$bild_form, $next_reihenfolge);
+
+            //resize file
+            $file = $newFilePath;
+            //indicate the path and name for the new resized file
+            $resizedFile = $newFilePathCover;
 
             //call the function (when passing path to pic)
             $img = $this->smart_resize_image($file , null, $target_width , $target_height , false , $resizedFile , false , false ,100 );

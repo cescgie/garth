@@ -33,7 +33,11 @@
         <div class="card">
           <div class="card-image waves-effect waves-block waves-light album-image">
             <a class="group4"  title="<?= $value['title']?>" href="<?= DIR.$value['path'];?>">
+              <?php if($value['bild_form']==="portrait") :?>
+              <img style="border-color:white;width:65%;position:absolute;margin:auto" class="responsive-img hoverable z-depth-3 activator" src="<?= DIR.$value['cover'];?>">
+            <?php else:?>
               <img style="border-color:white;width:90%;position:absolute;margin:auto" class="responsive-img hoverable z-depth-3 activator" src="<?= DIR.$value['cover'];?>">
+            <?php endif;?>
             </a>
           </div>
           <div class="card-content">
