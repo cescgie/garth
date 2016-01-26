@@ -103,7 +103,7 @@
                 $i = 1;
                 foreach($data['images']as $key=>$value): ?>
                   <li class="ui-state-default">
-                    <img src="<?= DIR.$value['cover'];?>" style="width:100px;height:75px;" alt="" />
+                    <img src="<?= DIR.$value['cover'];?>" style="width:10%" alt="" />
                     <span class="ui-icon ui-icon-arrowthick-2-n-s"></span><span id="title" style="font-size:0.75em;;"><?=$i?> <?= $value['title'];?></span>
                     <input type="hidden" name="old_id" class="old_id" value="<?= $value['reihenfolge'];?>">
                     <input type="hidden" name="in_id" class="in_id" value="<?= $value['id'];?>">

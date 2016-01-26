@@ -327,7 +327,9 @@ class Portfolio extends Controller {
   }
 
   function createKategorie($cat_id){
-    $create['name'] = filter_var($_POST['new_album_name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+    $name = filter_var($_POST['new_album_name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+    $create['name'] = strtolower(str_replace(' ','_',$name));
+    //die(print_r($create['name']));
     $create['kategorie_id'] = $cat_id;
     $ober_kategorie_name = $_POST['ober_kategorie_name'];
     if(SESSION::get('admin')){
@@ -339,7 +341,7 @@ class Portfolio extends Controller {
 
   public function edit(){
     $edit['id'] = $_POST['id'];
-    $edit['title'] = $_POST['title'];
+    $edit['title'] = strtolower(str_replace(' ','_',$_POST['title']));
     $edit['keywords'] = filter_var($_POST['keywords'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
     $edit['edited_at'] = date("Y-m-d H:i:s");
     $edit['description'] = filter_var($_POST['description'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
@@ -362,7 +364,8 @@ class Portfolio extends Controller {
     if(SESSION::get('admin')){
       //set name
       if(isset($_POST['name']) && $_POST['name']!=''){
-        $edit['name'] = strtolower(filter_var($_POST['name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH));
+        $name= strtolower(filter_var($_POST['name'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH));
+        $edit['name'] = str_replace(' ','_',$_POST['name']);
       }else{
         $edit['name'] = $kategorie[0]['name'];
       }
@@ -389,9 +392,17 @@ class Portfolio extends Controller {
           $file = $newFilePath;
           //indicate the path and name for the new resized file
           $resizedFile = $newFilePath;
+
+          list($width, $height) = getimagesize($newFilePath);
+          $ratio = $width/$height;
+          $tenpercentwidth = 0.10 * $width;
+          $tenpercentheight = 0.10 * $height;
+          $target_width = $tenpercentheight * $ratio;
+          $target_height = $tenpercentwidth / $ratio;
+
           //call the function (when passing path to pic)
-          //$img = $this->smart_resize_image($file , null, 250 , 150 , false , $resizedFile , false , false ,10 );
-          $img = $this->compress($file , $resizedFile , 50 );
+          $img = $this->smart_resize_image($file , null, $target_width , $target_height , false , $resizedFile , false , false ,10 );
+          //$img = $this->compress($file , $resizedFile , 50 );
         }else{
           //"no image";
           $edit['image'] = $kategorie[0]['image'];
@@ -557,7 +568,7 @@ class Portfolio extends Controller {
     if(SESSION::get('admin')){
       $album_id = $_POST['album_id'];
       $data['albums'] = $this->_model->selectOne("albums","id",$album_id);
-
+      $album_name = $data['albums'][0]['name'];
       $upload['kategorie_id'] = $data['albums'][0]['kategorie_id'];
       $upload['album_id'] = $album_id;
 
@@ -573,20 +584,21 @@ class Portfolio extends Controller {
 
           if ($tmpFilePath != ""){
             $date = date('Y-m-d');
-            $newfolder = getcwd()."/assets/collections/".$date;
+            $newfolder = getcwd()."/assets/collections/".$album_name;
             if(!is_dir($newfolder)){
               mkdir($newfolder, 0777, true);
               chmod($newfolder,0777);
             }
-            $newfolderCover = getcwd()."/assets/collections/".$date."/cover";
+            $newfolderCover = getcwd()."/assets/collections/".$album_name."/cover";
             if(!is_dir($newfolderCover)){
               mkdir($newfolderCover, 0777, true);
               chmod($newfolderCover,0777);
             }
             $size = $_FILES["images"]["size"][$i];
-            $newFile = $data['albums'][0]['name'].'_'.$_FILES["images"]["name"][$i];
-            $newFilePath = 'assets/collections/'.$date.'/'.$newFile;
-            $newFilePathCover = "assets/collections/".$date."/cover/".$newFile;
+            $newFile = $_FILES["images"]["name"][$i];
+            $newFilePath = 'assets/collections/'.$album_name.'/'.$newFile;
+            $cover_path = 'cover';
+            $newFilePathCover = "assets/collections/".$album_name."/".$cover_path."/".$newFile;
             $foto_name = $_FILES["images"]["name"][$i];
             $upload['title'] = preg_replace('/\\.[^.\\s]{3,4}$/', '', $foto_name);
             $uploads = move_uploaded_file($tmpFilePath[$i], $newFilePath);
@@ -596,9 +608,17 @@ class Portfolio extends Controller {
             $file = $newFilePath;
             //indicate the path and name for the new resized file
             $resizedFile = $newFilePathCover;
+
+            list($width, $height) = getimagesize($newFilePath);
+            $ratio = $width/$height;
+            $tenpercentwidth = 0.10 * $width;
+            $tenpercentheight = 0.10 * $height;
+            $target_width = $tenpercentheight * $ratio;
+            $target_height = $tenpercentwidth / $ratio;
+
             //call the function (when passing path to pic)
-            //$img = $this->smart_resize_image($file , null, '230' , '150' , false , $resizedFile , false , false ,100 );
-            $img = $this->compress($file , $resizedFile , 50 );
+            $img = $this->smart_resize_image($file , null, $target_width , $target_height , false , $resizedFile , false , false ,100 );
+            //$img = $this->compress($file , $resizedFile , 50 );
             if($img){
               Message::set("Upload success",'success');
             }else{

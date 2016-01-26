@@ -37,7 +37,7 @@
                 </a>
               </div>
               <div class="card-content">
-                <p class="center activator grey-text text-darken-4 "><?= ucwords($value['name']); ?></p>
+                <p class="center activator grey-text text-darken-4 "><?= ucwords(str_replace('_',' ',$value['name'])); ?></p>
                 <?php if(SESSION::get('admin')) :?>
                   <a class="modal-trigger-editKategorie waves-effect waves-light btn btn-navigator" style="background-color:#1e88e5" href="#modal<?=$value['id']?>">Edit</a>
                   <a class="modal-trigger-deleteKategorie waves-effect waves-light btn btn-navigator" style="background-color:#ff5252" href="#modalDeleteKategorie<?=$value['id']?>">Delete</a>
@@ -49,11 +49,11 @@
           <!-- Modal Structure -->
           <div id="modal<?=$value['id']?>" class="modal">
             <div class="modal-content">
-              <h4><?= ucwords($value['name']); ?></h4>
+              <h4><?= ucwords(str_replace('_',' ',$value['name'])); ?></h4>
               <form id="form" action="<?= DIR ?>portfolio/editKategorie/<?=$value['id']?>" enctype="multipart/form-data" method="post">
                 <div class="row">
                   <div class="input-field col s12">
-                    <input value="<?= ucwords($value['name']);?>" id="name" name="name" type="text" class="validate">
+                    <input value="<?= ucwords(str_replace('_',' ',$value['name']));?>" id="name" name="name" type="text" class="validate">
                     <label class="active" for="title">Name</label>
                   </div>
                   <div class="file-field col s12">
