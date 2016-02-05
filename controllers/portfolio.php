@@ -380,7 +380,7 @@ class Portfolio extends Controller {
           //temporary path
           $tmp_name = $_FILES['kategorie_cover'.$id]['tmp_name'];
           //rename file with date
-          $file_name = $oberkategorie[0]['name'].'_'.$kategorie[0]['name'].'.'.$ext;
+          $file_name = $oberkategorie[0]['name'].'_'.$kategorie[0]['name'].'_'.date("Y-m-d_H:i:s").'.'.$ext;
           //path for new file
           $newFilePath = 'assets/kategorie/'.$file_name;
           $edit['image'] = $newFilePath;
