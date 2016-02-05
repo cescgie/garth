@@ -393,13 +393,27 @@ class Portfolio extends Controller {
           $file = $newFilePath;
           //indicate the path and name for the new resized file
           $resizedFile = $newFilePath;
+          $size = $_FILES['kategorie_cover'.$id]['size'];
 
           list($width, $height) = getimagesize($newFilePath);
           $ratio = $width/$height;
-          $tenpercentwidth = 0.10 * $width;
-          $tenpercentheight = 0.10 * $height;
+
+          if($width>2500 || $height>2500){
+            $convertpercentage = 0.10;
+          }else{
+            $convertpercentage = 0.30;
+          }
+
+          $tenpercentwidth = $convertpercentage * $width;
+          $tenpercentheight = $convertpercentage * $height;
           $target_width = $tenpercentheight * $ratio;
           $target_height = $tenpercentwidth / $ratio;
+
+		      if($width<$height){
+              $edit['image_form'] = 1;
+          }else{
+              $edit['image_form'] = 2;
+          }
 
           //call the function (when passing path to pic)
           $img = $this->smart_resize_image($file , null, $target_width , $target_height , false , $resizedFile , false , false ,10 );
@@ -606,16 +620,25 @@ class Portfolio extends Controller {
 
             list($width, $height) = getimagesize($newFilePath);
             $ratio = $width/$height;
-            $tenpercentwidth = 0.10 * $width;
-            $tenpercentheight = 0.10 * $height;
+
+            if($width>2500 || $height>2500){
+              $convertpercentage = 0.10;
+            }else{
+              $convertpercentage = 0.30;
+            }
+
+            $tenpercentwidth = $convertpercentage * $width;
+            $tenpercentheight = $convertpercentage * $height;
             $target_width = $tenpercentheight * $ratio;
             $target_height = $tenpercentwidth / $ratio;
+
             if($width<$height){
-              $bild_form = 'portrait';
+              $bild_form = 1;
             }else{
-              $bild_form = 'landscape';
+              $bild_form = 2;
             }
-            //insert to database
+
+			      //insert to database
             $save = $this->insert($_FILES["images"]["name"][$i],$newFilePath,$newFilePathCover,$upload['album_id'],$upload['kategorie_id'],$upload['title'],$size,$bild_form, $next_reihenfolge);
 
             //resize file
