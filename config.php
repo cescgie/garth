@@ -17,5 +17,8 @@ define('DB_PASS','');
 //set prefix for sessions
 define('SESSION_PREFIX','astrid-garth_');
 
+//set kontakt email
+define('KONTAKT_EMAIL','astrid.garth@gmx.de');
+
 //optionall create a constant for the name of the site
 define('SITETITLE','Astrid Garth');

@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="de" xml:lang="de" xmlns="http://www.w3.org/1999/xhtml">
 <head>
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +7,8 @@
    <meta name="msapplication-tap-highlight" content="no">
    <meta name="author" content="Astrid Garth"/>
    <meta name="robots" content="all"/>
-   <meta name="description" content="Astrid Garth"/>
-   <meta name="keywords" lang="de" content="<?= $data['meta'];?>"/>
+   <meta name="description" content="Astrid Garth - Photoreport - Kaiser - Friedrich - Ring 25, Wiesbaden. Haben die Bilder Ihr Interesse geweckt? Mit &uumlber 20 Jahren Berufserfahrung bin ich genau die Richtige f&uumlr eine stimmungsvolle Reportage Ihres Firmenevents oder aussagekr&aumlftige Werbeaufn, <?= $data['meta_description'];?>"/>
+   <meta name="keywords" lang="de" content="<?= $data['meta_keywords'];?>"/>
    <title><?= $data['title'] . ' - ' . SITETITLE ?></title>
    <link rel="shortcut icon" href="http://www.astrid-garth.de//bilder/favicon.ico"/>
    <!-- Compiled and minified CSS -->
@@ -27,9 +27,19 @@
    <link type="text/css" href="<?= URL::EXTRAS('style','css')?>" media="screen">
    <link rel="stylesheet" href="<?= URL::COLORBOX('example5/colorbox','css')?>" media="screen" title="no title" charset="utf-8">
    <script type="text/javascript" src="<?= URL::COLORBOX('jquery.colorbox','js')?>"></script>
-   <!-- sortable -->
+   <script>
+			$(document).ready(function(){
+				//Examples of how to assign the Colorbox event to elements
+				$(".group4").colorbox({rel:'group4', slideshow:true});
+			});
+		</script>
    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+   <style media="screen">
+     *{
+       font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+     }
+   </style>
    </head>
 <body>
     <div align="center" class="margin-auto">
