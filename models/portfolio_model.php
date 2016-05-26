@@ -14,15 +14,15 @@ class Portfolio_Model extends Model {
    }
 
    public function selectOne($table,$col,$val){
-     return $this->_db->select('SELECT * FROM '.$table.' WHERE '.$col.' = "'.$val.'"');
+     return $this->_db->select('SELECT * FROM '.$table.' WHERE '.$col.' = "'.$val.'" ORDER BY name ASC');
    }
 
    public function create($table,$data){
      return $this->_db->insert($table, $data);
    }
 
-   public function count($table,$col,$val){
-     return $this->_db->select('SELECT count(*) as total FROM '.$table.' WHERE '.$col.' = "'.$val.'"');
+   public function count($table,$clause=null){
+    return $this->_db->select("SELECT count(*) as total FROM $table $clause ");
    }
 
    public function selectRow($table,$col,$val,$group_by,$row,$limit){
@@ -52,4 +52,13 @@ class Portfolio_Model extends Model {
    public function selectOneRei($table,$col,$val){
      return $this->_db->select('SELECT * FROM '.$table.' WHERE '.$col.' = "'.$val.'" ORDER BY reihenfolge ASC');
    }
+
+   public function selectClauseOrderBy($table,$clause = null,$order=null){
+     return $this->_db->select("SELECT * FROM $table $clause $order ASC");
+   }
+
+   public function selectObjectClauseOrderBy($table,$select,$clause = null,$order=null,$limit=null){
+     return $this->_db->select("SELECT $select FROM $table $clause $order $limit");
+   }
+
 }
